@@ -262,7 +262,14 @@ set(${PROJECT_NAME}_source_files
     statistics/fastdds/domain/DomainParticipant.cpp
     statistics/fastdds/publisher/qos/DataWriterQos.cpp
     statistics/fastdds/subscriber/qos/DataReaderQos.cpp
-    )
+        rtps/transport/DPDKTransport.cpp
+        rtps/transport/DPDKTransport.h
+        rtps/transport/DPDKTransportDescriptor.cpp
+        rtps/transport/DPDKTransportDescriptor.h
+        rtps/transport/DPDKSenderResource.cpp
+        rtps/transport/DPDKSenderResource.h
+        rtps/transport/UserspaceL2Utils.h
+)
 
 # Statistics support
 if (FASTDDS_STATISTICS)
@@ -520,6 +527,24 @@ target_link_libraries(${PROJECT_NAME} ${PRIVACY} fastcdr foonathan_memory
     ${THIRDPARTY_BOOST_LINK_LIBS}
     PRIVATE eProsima_atomic
     )
+
+# Extensions for user-space networking
+pkg_check_modules(LIBDPDK REQUIRED IMPORTED_TARGET libdpdk)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBDPDK)
+target_compile_options(${PROJECT_NAME} PRIVATE ${LIBDPDK_CFLAGS})
+target_include_directories(${PROJECT_NAME} PRIVATE ${LIBDPDK_INCLUDE_DIRS})
+message(DPDK Include Directory: ${LIBDPDK_INCLUDE_DIRS})
+
+pkg_check_modules(LIBXDP REQUIRED IMPORTED_TARGET libxdp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBXDP)
+target_compile_options(${PROJECT_NAME} PRIVATE ${LIBXDP_CFLAGS})
+target_include_directories(${PROJECT_NAME} PRIVATE ${LIBXDP_INCLUDE_DIRS})
+
+# Clion support :/
+#include_directories(SYSTEM /usr/include/c++/13/)
+# :/
 
 if(MSVC OR MSVC_IDE)
     # On installed binaries use manifest to specify dependencies

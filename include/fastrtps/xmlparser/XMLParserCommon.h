@@ -211,6 +211,8 @@ extern const char* UDPv6;
 extern const char* TCPv4;
 extern const char* TCPv6;
 extern const char* SHM;
+extern const char* EXTERN_DPDK;
+extern const char* EXTERN_XDP;
 extern const char* DEFAULT_C;
 extern const char* DEFAULTv6;
 extern const char* LARGE_DATA;
