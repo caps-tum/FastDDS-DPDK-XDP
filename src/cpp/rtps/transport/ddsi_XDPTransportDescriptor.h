@@ -13,16 +13,16 @@ namespace eprosima {
         namespace rtps {
 
             // TODO
-            static constexpr uint32_t DPDK_MAXIMUM_MESSAGE_SIZE = 1000;
-            static constexpr uint32_t DPDK_MAXIMUM_INITIAL_PEERS_RANGE = 1;
+            static constexpr uint32_t XDP_MAXIMUM_MESSAGE_SIZE = 1000;
+            static constexpr uint32_t XDP_MAXIMUM_INITIAL_PEERS_RANGE = 1;
 
 
 
-            class DPDKTransportDescriptor : public PortBasedTransportDescriptor {
+            class ddsi_XDPTransportDescriptor : public PortBasedTransportDescriptor {
 
             public:
 
-                DPDKTransportDescriptor();
+                ddsi_XDPTransportDescriptor();
 
                 TransportInterface *create_transport() const override;
 

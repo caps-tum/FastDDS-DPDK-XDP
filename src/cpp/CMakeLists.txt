@@ -268,7 +268,13 @@ set(${PROJECT_NAME}_source_files
         rtps/transport/DPDKTransportDescriptor.h
         rtps/transport/DPDKSenderResource.cpp
         rtps/transport/DPDKSenderResource.h
-        rtps/transport/UserspaceL2Utils.h
+        rtps/transport/ddsi_UserspaceL2Utils.h
+        rtps/transport/ddsi_l2_transport.cpp
+        rtps/transport/ddsi_l2_transport.h
+        rtps/transport/ddsi_XDPTransport.cpp
+        rtps/transport/ddsi_XDPTransport.h
+        rtps/transport/ddsi_XDPTransportDescriptor.h
+        rtps/transport/ddsi_XDPTransportDescriptor.cpp
 )
 
 # Statistics support
@@ -541,6 +547,17 @@ pkg_check_modules(LIBXDP REQUIRED IMPORTED_TARGET libxdp)
 target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBXDP)
 target_compile_options(${PROJECT_NAME} PRIVATE ${LIBXDP_CFLAGS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${LIBXDP_INCLUDE_DIRS})
+
+## Compile the XDP Kernel extension
+#add_custom_command(
+#        OUTPUT ddsi_xdp_l2_kern.o
+#        COMMAND clang -S -target bpf -D __BPF_TRACING__ -Wall -Wextra -O2 -emit-llvm -c -g -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
+#        COMMAND llc -march=bpf -filetype=obj -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll
+#        MAIN_DEPENDENCY ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
+#)
+#add_custom_target(ddsi_xdp_l2_kern SOURCES ddsi_xdp_l2_kern.o)
+#add_dependencies(${PROJECT_NAME} ddsi_xdp_l2_kern)
+
 
 # Clion support :/
 #include_directories(SYSTEM /usr/include/c++/13/)

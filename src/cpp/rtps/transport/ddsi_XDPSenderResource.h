@@ -2,21 +2,23 @@
 // Created by Vincent Bode on 09/07/2024.
 //
 
-#ifndef FASTDDS_DPDKSENDERRESOURCE_H
-#define FASTDDS_DPDKSENDERRESOURCE_H
+#ifndef FASTDDS_DDSIXDPSENDERRESOURCE_H
+#define FASTDDS_DDSIXDPSENDERRESOURCE_H
 
 #include <fastdds/rtps/transport/SenderResource.h>
-#include "DPDKTransport.h"
+#include "ddsi_XDPTransport.h"
 
 namespace eprosima {
     namespace fastdds {
         namespace rtps {
 
 
-            class DPDKSenderResource : public fastrtps::rtps::SenderResource {
+            class ddsi_XDPSenderResource : public fastrtps::rtps::SenderResource {
 
             public:
-                explicit DPDKSenderResource(DPDKTransport& transport);
+                explicit ddsi_XDPSenderResource(ddsi_XDPTransport& transport);
+
+
 
             };
 
@@ -24,4 +26,4 @@ namespace eprosima {
     }
 }
 
-#endif //FASTDDS_DPDKSENDERRESOURCE_H
+#endif //FASTDDS_DDSIXDPSENDERRESOURCE_H

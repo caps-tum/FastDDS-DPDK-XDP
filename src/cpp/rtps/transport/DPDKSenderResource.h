@@ -5,7 +5,7 @@
 #ifndef FASTDDS_DPDKSENDERRESOURCE_H
 #define FASTDDS_DPDKSENDERRESOURCE_H
 
-#include <fastdds/rtps/transport/SenderResource.hpp>
+#include <fastdds/rtps/transport/SenderResource.h>
 #include "DPDKTransport.h"
 
 namespace eprosima {
@@ -13,7 +13,7 @@ namespace eprosima {
         namespace rtps {
 
 
-            class DPDKSenderResource : public SenderResource {
+            class DPDKSenderResource : public fastrtps::rtps::SenderResource {
 
             public:
                 explicit DPDKSenderResource(DPDKTransport& transport);

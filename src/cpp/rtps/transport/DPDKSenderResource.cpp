@@ -4,7 +4,7 @@
 
 #include <rte_ethdev.h>
 #include "DPDKSenderResource.h"
-#include "UserspaceL2Utils.h"
+#include "ddsi_UserspaceL2Utils.h"
 #include "DPDKTransport.h"
 
 namespace eprosima {
