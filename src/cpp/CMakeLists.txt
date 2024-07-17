@@ -265,7 +265,7 @@ set(${PROJECT_NAME}_source_files
         rtps/transport/DPDKTransport.cpp
         rtps/transport/DPDKTransport.h
         rtps/transport/DPDKTransportDescriptor.cpp
-        rtps/transport/DPDKTransportDescriptor.h
+        ../../include/fastdds/rtps/transport/DPDKTransportDescriptor.h
         rtps/transport/DPDKSenderResource.cpp
         rtps/transport/DPDKSenderResource.h
         rtps/transport/ddsi_UserspaceL2Utils.h
@@ -273,7 +273,7 @@ set(${PROJECT_NAME}_source_files
         rtps/transport/ddsi_l2_transport.h
         rtps/transport/ddsi_XDPTransport.cpp
         rtps/transport/ddsi_XDPTransport.h
-        rtps/transport/ddsi_XDPTransportDescriptor.h
+        ../../include/fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h
         rtps/transport/ddsi_XDPTransportDescriptor.cpp
         rtps/transport/ddsi_XDPSenderResource.cpp
 )

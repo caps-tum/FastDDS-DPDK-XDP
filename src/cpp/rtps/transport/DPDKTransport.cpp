@@ -3,7 +3,7 @@
 //
 
 #include "DPDKTransport.h"
-#include "DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
 #include "DPDKSenderResource.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include "ddsi_l2_transport.h"

@@ -2,7 +2,7 @@
 // Created by Vincent Bode on 08/07/2024.
 //
 
-#include "ddsi_XDPTransportDescriptor.h"
+#include "fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h"
 #include "ddsi_XDPTransport.h"
 
 namespace eprosima {

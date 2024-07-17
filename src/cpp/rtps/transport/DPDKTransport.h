@@ -6,7 +6,7 @@
 #define FASTDDS_DPDKTRANSPORT_H
 
 #include <fastdds/rtps/transport/TransportInterface.h>
-#include "DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
 #include "ddsi_l2_transport.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include <rte_eal.h>

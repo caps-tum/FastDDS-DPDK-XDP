@@ -7,7 +7,7 @@
 
 #include "ddsi_l2_transport.h"
 #include "ddsi_UserspaceL2Utils.h"
-#include "ddsi_XDPTransportDescriptor.h"
+#include "fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h"
 
 #include <xdp/xsk.h>
 #include <linux/if_ether.h>

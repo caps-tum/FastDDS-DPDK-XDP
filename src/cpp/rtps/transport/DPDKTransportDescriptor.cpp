@@ -2,7 +2,7 @@
 // Created by Vincent Bode on 08/07/2024.
 //
 
-#include "DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
 #include "DPDKTransport.h"
 
 namespace eprosima {

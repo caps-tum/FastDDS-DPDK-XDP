@@ -42,7 +42,7 @@
 
 #include <rtps/network/utils/netmask_filter.hpp>
 #include <rtps/xmlparser/XMLParserUtils.hpp>
-#include "rtps/transport/DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
 
 namespace eprosima {
 namespace fastrtps {

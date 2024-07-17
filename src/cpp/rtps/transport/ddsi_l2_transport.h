@@ -10,7 +10,7 @@
 #include <rte_ethdev.h>
 #include <rte_mbuf.h>
 #include <rte_eal.h>
-#include "DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
 #include <fastdds/rtps/transport/TransportInterface.h>
 #include "ddsi_UserspaceL2Utils.h"
 
