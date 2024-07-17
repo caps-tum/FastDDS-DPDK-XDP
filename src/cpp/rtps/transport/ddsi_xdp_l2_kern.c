@@ -3,8 +3,15 @@
 #include <linux/bpf.h>
 #include <linux/if_ether.h>
 #include <bpf/bpf_helpers.h>
+#include <stdint.h>
 
-#include "ddsi__userspace_l2_utils.h"
+#define DDSI_USERSPACE_L2_ETHER_TYPE_BASE 0xA000
+#define DDSI_USERSPACE_L2_ETHER_TYPE_MAX 0xBFFF
+
+static inline uint16_t ddsi_userspace_l2_is_valid_ethertype(uint16_t ethertype) {
+    return ethertype >= DDSI_USERSPACE_L2_ETHER_TYPE_BASE && ethertype <= DDSI_USERSPACE_L2_ETHER_TYPE_MAX;
+}
+
 
 struct {
 	__uint(type, BPF_MAP_TYPE_XSKMAP);

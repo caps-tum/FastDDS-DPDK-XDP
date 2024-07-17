@@ -3,6 +3,7 @@
 //
 
 #include <rte_ethdev.h>
+#include <rte_hash_crc.h>
 #include "ddsi_XDPSenderResource.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include "ddsi_XDPTransport.h"
@@ -23,6 +24,9 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
             LocatorsIterator* destination_locators_begin,
             LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point& max_blocking_time_point) -> bool {
+
+//        printf("XDP: Write start.\n");
+
 
         // We only do multicast between two participants so destination locators don't really matter
         // We assume there is only one target
@@ -88,11 +92,11 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
             sendto(xsk_socket__fd(xsk->xsk), NULL, 0, MSG_DONTWAIT, NULL, 0);
         }
 
-//    printf("XDP: Write complete (port %i, %zu iovs, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free, %i pending).\n",
-//           dst->port, niov, data_copied,
+//    printf("XDP: Write complete (port %i, %u bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free, %i pending).\n",
+//           dst.port, total_bytes,
 //           frame_buffer->payload[0], frame_buffer->payload[1], frame_buffer->payload[2],
-//           frame_buffer->payload[data_copied-3], frame_buffer->payload[data_copied-2], frame_buffer->payload[data_copied-1],
-//           rte_hash_crc(frame_buffer->payload, data_copied, 1337),
+//           frame_buffer->payload[total_bytes-3], frame_buffer->payload[total_bytes-2], frame_buffer->payload[total_bytes-1],
+//           rte_hash_crc(frame_buffer->payload, total_bytes, 1337),
 //           xsk_umem_free_frames(xsk, true),
 //           pendingTransmits
 //    );

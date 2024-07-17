@@ -63,6 +63,10 @@ namespace rtps {
 /// Shared memory locator kind
 #define LOCATOR_KIND_SHM 16
 
+#define LOCATOR_KIND_DPDK 64
+#define LOCATOR_KIND_XDP 128
+
+
 /**
  * @brief Class Locator_t, uniquely identifies a communication channel for a particular transport.
  * For example, an address + port combination in the case of UDP.

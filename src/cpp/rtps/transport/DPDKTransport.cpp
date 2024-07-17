@@ -108,6 +108,14 @@ int DPDKTransport::dpdk_port_init(uint16_t port, struct rte_mempool *rx_mbuf_poo
     return 0;
 }
 
+static struct rte_ether_addr get_dpdk_interface_mac_address(uint16_t portId) {
+    struct rte_ether_addr addr;
+    int retval = rte_eth_macaddr_get(portId, &addr);
+    if (retval != 0) {
+        assert(false);
+    }
+    return addr;
+}
 
 bool DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) {
 
@@ -146,6 +154,11 @@ bool DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const
                                "\n", dpdk_port_identifier);
     }
 
+    auto interfaceAddress =  get_dpdk_interface_mac_address(dpdk_port_identifier);
+    DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(localMacAddress.bytes, 0, &interfaceAddress.addr_bytes)
+    localLoc = { transport_kind_, 0 };
+    DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(localLoc.address, 10, &localMacAddress.bytes);
+
 
     // TODO: max_msg_size_no_frag?
     return true;
@@ -153,7 +166,7 @@ bool DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const
 
 bool DPDKTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &locator) const {
     assert(locator.kind == transport_kind_);
-    return true;
+    return receiverInterface != nullptr;
 }
 
 bool DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {

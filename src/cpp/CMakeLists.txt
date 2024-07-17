@@ -557,14 +557,14 @@ endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBBPF_LIBRARY})
 
 ## Compile the XDP Kernel extension
-#add_custom_command(
-#        OUTPUT ddsi_xdp_l2_kern.o
-#        COMMAND clang -S -target bpf -D __BPF_TRACING__ -Wall -Wextra -O2 -emit-llvm -c -g -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
-#        COMMAND llc -march=bpf -filetype=obj -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll
-#        MAIN_DEPENDENCY ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
-#)
-#add_custom_target(ddsi_xdp_l2_kern SOURCES ddsi_xdp_l2_kern.o)
-#add_dependencies(${PROJECT_NAME} ddsi_xdp_l2_kern)
+add_custom_command(
+        OUTPUT ddsi_xdp_l2_kern.o
+        COMMAND clang -S -target bpf -D __BPF_TRACING__ -Wall -Wextra -O2 -emit-llvm -c -g -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
+        COMMAND llc -march=bpf -filetype=obj -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll
+        MAIN_DEPENDENCY ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
+)
+add_custom_target(ddsi_xdp_l2_kern SOURCES ddsi_xdp_l2_kern.o)
+add_dependencies(${PROJECT_NAME} ddsi_xdp_l2_kern)
 
 
 # Clion support :/

@@ -14,7 +14,7 @@ namespace eprosima {
 
 
             TransportInterface *ddsi_XDPTransportDescriptor::create_transport() const {
-                return new ddsi_XDPTransport(0, *this);
+                return new ddsi_XDPTransport(*this);
             }
 
             // TODO

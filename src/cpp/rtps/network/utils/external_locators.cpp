@@ -70,6 +70,8 @@ static void get_mask_and_cost(
     {
         case LOCATOR_KIND_UDPv4:
         case LOCATOR_KIND_TCPv4:
+        case LOCATOR_KIND_XDP:
+        case LOCATOR_KIND_DPDK:
             // TODO(MiguelCompany): We should take cost from the routing table
             cost = 1;
             break;

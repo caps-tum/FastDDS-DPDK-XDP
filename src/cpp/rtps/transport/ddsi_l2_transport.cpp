@@ -51,6 +51,8 @@ eprosima::fastdds::rtps::ddsi_l2_transport::NormalizeLocator(const Locator &loca
 
 void eprosima::fastdds::rtps::ddsi_l2_transport::select_locators(fastrtps::rtps::LocatorSelector &selector) const {
     // TODO
+    assert(selector.selected_size() == 0);
+    selector.select(0);
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::is_local_locator(const Locator &locator) const {
@@ -130,8 +132,8 @@ bool eprosima::fastdds::rtps::ddsi_l2_transport::configureInitialPeerLocator(Loc
                                                                              const fastrtps::rtps::PortParameters &port_params,
                                                                              uint32_t domainId,
                                                                              LocatorList &list) const {
+    printf("L2Transport: Configure initial peer locator called.\n");
     if (locator.port == 0) {
-        printf("Configure initial peer locator called.\n");
 
         // Logic simplified, not clear what should be done here.
         Locator auxloc(locator);

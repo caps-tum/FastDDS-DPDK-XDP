@@ -12,8 +12,20 @@
 #include <rte_eal.h>
 #include <rte_mbuf.h>
 #include <rte_ethdev.h>
+#include <rte_version.h>
 #include <thread>
 #include <fastdds/rtps/attributes/PropertyPolicy.h>
+
+
+// DPDK renamed some fields :/
+#if RTE_VER_YEAR == 23 && RTE_VER_MONTH == 11
+#define RTE_SRC_ADDR src_addr
+#define RTE_DST_ADDR dst_addr
+#else
+#define RTE_SRC_ADDR s_addr
+#define RTE_DST_ADDR d_addr
+#endif
+
 
 namespace eprosima {
 namespace fastdds {

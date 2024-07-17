@@ -58,7 +58,11 @@ struct xsk_socket_info {
     umem_free_frame_stack umem_frames_rx;
 };
 
-
+static uint64_t xsk_umem_free_frames(struct xsk_socket_info *xsk, bool is_tx)
+{
+    umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
+    return freeFrameStack->umem_frame_free;
+}
 
 class ddsi_XDPTransport : public ddsi_l2_transport {
 protected:
@@ -71,7 +75,7 @@ protected:
 
 public:
 
-    explicit ddsi_XDPTransport(int32_t transportKind, const ddsi_XDPTransportDescriptor &descriptor);
+    explicit ddsi_XDPTransport(const ddsi_XDPTransportDescriptor &descriptor);
 
     bool init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) override;
 

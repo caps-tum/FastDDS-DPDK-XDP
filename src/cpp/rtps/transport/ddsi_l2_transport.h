@@ -26,7 +26,7 @@ public:
 
     bool IsLocatorSupported(const Locator &locator) const override;
 
-    int32_t transport_kind_ = 0xFF;
+    int32_t transport_kind_ = 0x7FFFFFFF;
 
     bool is_locator_allowed(const Locator &locator) const override;
 
@@ -63,10 +63,10 @@ public:
 
     bool fillUnicastLocator(Locator &locator, uint32_t well_known_port) const override;
 
-    Locator localLoc;
 
-//TODO: Initialize
-userspace_l2_mac_addr localMacAddress;
+    //TODO: Initialize
+    Locator localLoc;
+    userspace_l2_mac_addr localMacAddress;
 protected:
 
 };

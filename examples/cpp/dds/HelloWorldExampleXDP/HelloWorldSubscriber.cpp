@@ -18,14 +18,14 @@
  */
 
 #include "HelloWorldSubscriber.h"
+#include "fastdds/dds/log/StdoutConsumer.hpp"
 
 #include <chrono>
 #include <thread>
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
-#include <fastdds/rtps/transport/shared_mem/SharedMemTransportDescriptor.h>
-#include <fastdds/rtps/transport/UDPv4TransportDescriptor.h>
+#include <fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h>
 
 using namespace eprosima::fastdds::dds;
 using namespace eprosima::fastdds::rtps;
@@ -42,21 +42,24 @@ HelloWorldSubscriber::HelloWorldSubscriber()
 
 bool HelloWorldSubscriber::init()
 {
+    Log::Reset();
+    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
+    Log::RegisterConsumer(std::move(stdout_consumer));
+    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
-    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
-    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
-    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
-    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationWriterANDSubscriptionReader = true;
-    pqos.wire_protocol().builtin.discovery_config.leaseDuration = eprosima::fastrtps::c_TimeInfinite;
+//    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
+//    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
+//    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
+//    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationWriterANDSubscriptionReader = true;
+//    pqos.wire_protocol().builtin.discovery_config.leaseDuration = eprosima::fastrtps::c_TimeInfinite;
     pqos.name("Participant_sub");
 
     // Explicit configuration of SharedMem transport
     pqos.transport().use_builtin_transports = false;
 
-    auto sm_transport = std::make_shared<SharedMemTransportDescriptor>();
-    sm_transport->segment_size(2 * 1024 * 1024);
+    auto sm_transport = std::make_shared<ddsi_XDPTransportDescriptor>();
     pqos.transport().user_transports.push_back(sm_transport);
 
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
@@ -100,6 +103,8 @@ bool HelloWorldSubscriber::init()
     {
         return false;
     }
+
+    printf("Subscriber logging level: %i\n", Log::GetVerbosity());
 
     return true;
 }

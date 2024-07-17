@@ -23,6 +23,7 @@
 #include <fastrtps/utils/IPFinder.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <rte_hash_crc.h>
 
 namespace eprosima {
 namespace fastdds {
@@ -78,11 +79,6 @@ void ddsi_XDPTransport::xsk_free_umem_frame(struct xsk_socket_info *xsk, uint64_
     freeFrameStack->umem_frame_free++;
 //    fprintf(stderr, "XDP UMEM: 1 %s frame freed: %lu.\n", is_tx?"TX":"RX", frame);
     assert(frame >= 0 && frame < NUM_FRAMES * XDP_L2_FRAME_SIZE);
-}
-
-static uint64_t xsk_umem_free_frames(struct xsk_socket_info *xsk, bool is_tx) {
-    umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
-    return freeFrameStack->umem_frame_free;
 }
 
 struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_info *umem) {
@@ -191,6 +187,8 @@ void ddsi_XDPTransport::processIncomingData() {
     uint32_t idx_rx = 0, idx_fq = 0;
     int ret;
 
+    printf("XDP: Read thread started.\n");
+
     while (true) {
 
         for (uint8_t tries = 0; tries < 200; tries++) {
@@ -205,6 +203,7 @@ void ddsi_XDPTransport::processIncomingData() {
 
         if (packetsReceived == 0) {
             std::this_thread::sleep_for(std::chrono::microseconds(500));
+            continue;
         }
 
         /* Stuff the ring with as many frames as possible */
@@ -238,7 +237,14 @@ void ddsi_XDPTransport::processIncomingData() {
             srcloc.kind = XDP_TRANSPORT_KIND;
             srcloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
             DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.h_source);
+
             bytes_received = DDSI_USERSPACE_GET_PAYLOAD_SIZE(rxDescriptor->len, struct xdp_l2_packet);
+
+            Locator dstloc{};
+            dstloc.kind = XDP_TRANSPORT_KIND;
+            dstloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
+            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
+
             receiverInterface->OnDataReceived(
                     packet->payload,
                     bytes_received,
@@ -246,6 +252,16 @@ void ddsi_XDPTransport::processIncomingData() {
                     srcloc
             );
 //            memcpy(buf, packet->payload, bytes_received);
+
+            printf("XDP: Read complete (port %i, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
+                   srcloc.port, bytes_received,
+                   packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[bytes_received-3], packet->payload[bytes_received-2], packet->payload[bytes_received-1],
+                   rte_hash_crc(packet->payload, bytes_received, 1337),
+                   xsk_umem_free_frames(xsk, false)
+            );
+
+        } else {
+//            printf("XDP: Frame ethertype %i ignored.\n", packet->header.h_proto);
         }
 
         xsk_free_umem_frame(xsk, rxDescriptor->addr, false);
@@ -254,13 +270,6 @@ void ddsi_XDPTransport::processIncomingData() {
         // This signals that we finished processing packetsProcessed (not necessarily == packetsReceived) packets from the
         // rxCompletionRing, freeing up the descriptor slots
         xsk_ring_cons__release(&xsk->rxCompletionRing, 1);
-
-//    printf("XDP: Read complete (port %i, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
-//           srcloc->port, bytes_received,
-//           buf[0], buf[1], buf[2], buf[bytes_received-3], buf[bytes_received-2], buf[bytes_received-1],
-//           rte_hash_crc(buf, bytes_received, 1337),
-//           xsk_umem_free_frames(xsk, false)
-//    );
 
     }
 }
@@ -416,6 +425,8 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
     xsk_if_queue = 0;
 
     localMacAddress = get_xdp_interface_mac_address(ifname);
+    localLoc = { transport_kind_, 0 };
+    DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(localLoc.address, 10, &localMacAddress.bytes);
 
     xdp_flags = 0;
     xsk_bind_flags = XDP_USE_NEED_WAKEUP;
@@ -439,14 +450,14 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
 //        } else {
 //            prog = xdp_program__open_file(cfg.filename, NULL, &opts);
 //        }
-    const char *xdp_module_path = "./lib/fastdds_xdp/FastDDS-EXT/build/ddsi_xdp_l2_kern.o";
+    const char *xdp_module_path = "./ddsi_xdp_l2_kern.o";
     printf("Assuming XDP module path: %s\n", xdp_module_path);
     prog = xdp_program__open_file(xdp_module_path, NULL, &opts);
     err = libxdp_get_error(prog);
     if (err) {
         libxdp_strerror(err, errmsg, sizeof(errmsg));
         fprintf(stderr, "XDP: error loading program: %s\n", errmsg);
-        return err;
+        exit(err);
     }
     fprintf(stderr, "XDP: BPF program loaded.\n");
 
@@ -457,7 +468,7 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
     if (err) {
         libxdp_strerror(err, errmsg, sizeof(errmsg));
         fprintf(stderr, "XDP: Couldn't attach XDP program on iface '%s' : %s (%d)\n", ifname, errmsg, err);
-        return err;
+        exit(err);
     }
     fprintf(stderr, "XDP: Program attached to %s.\n", ifname);
 
@@ -507,7 +518,7 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
 
 bool ddsi_XDPTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &locator) const {
     assert(locator.kind == transport_kind_);
-    return true;
+    return receiverInterface != nullptr;
 }
 
 bool ddsi_XDPTransport::CloseInputChannel(const Locator &locator) {
@@ -522,8 +533,8 @@ uint32_t ddsi_XDPTransport::max_recv_buffer_size() const {
     return 0;
 }
 
-ddsi_XDPTransport::ddsi_XDPTransport(int32_t transportKind, const ddsi_XDPTransportDescriptor &descriptor)
-        : ddsi_l2_transport(transportKind), transportDescriptor(&descriptor) {
+ddsi_XDPTransport::ddsi_XDPTransport(const ddsi_XDPTransportDescriptor &descriptor)
+        : ddsi_l2_transport(XDP_TRANSPORT_KIND), transportDescriptor(&descriptor) {
 
 }
 
