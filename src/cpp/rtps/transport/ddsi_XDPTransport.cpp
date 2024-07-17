@@ -22,6 +22,7 @@
 #include <csignal>
 #include <fastrtps/utils/IPFinder.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 namespace eprosima {
 namespace fastdds {

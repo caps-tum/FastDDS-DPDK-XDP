@@ -6,6 +6,7 @@
 #define FASTDDS_USERSPACEL2UTILS_H
 
 #include <cassert>
+#include <rte_version.h>
 
 #define DPDK_TRANSPORT_KIND 64
 #define XDP_TRANSPORT_KIND 128
@@ -13,8 +14,14 @@
 #define DDSI_USERSPACE_L2_ETHER_TYPE_BASE 0xA000
 #define DDSI_USERSPACE_L2_ETHER_TYPE_MAX 0xBFFF
 
+// DPDK renamed some fields :/
+#if RTE_VER_YEAR == 23 && RTE_VER_MONTH == 11
 #define RTE_SRC_ADDR src_addr
 #define RTE_DST_ADDR dst_addr
+#else
+#define RTE_SRC_ADDR s_addr
+#define RTE_DST_ADDR d_addr
+#endif
 
 typedef struct {
     unsigned char bytes[6];

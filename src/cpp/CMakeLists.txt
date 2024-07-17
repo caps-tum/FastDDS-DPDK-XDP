@@ -549,6 +549,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBXDP)
 target_compile_options(${PROJECT_NAME} PRIVATE ${LIBXDP_CFLAGS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${LIBXDP_INCLUDE_DIRS})
 
+find_library(LIBBPF_LIBRARY bpf)
+if(NOT LIBBPF_LIBRARY)
+    message(FATAL_ERROR "libbpf not found")
+endif()
+
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBBPF_LIBRARY})
+
 ## Compile the XDP Kernel extension
 #add_custom_command(
 #        OUTPUT ddsi_xdp_l2_kern.o
