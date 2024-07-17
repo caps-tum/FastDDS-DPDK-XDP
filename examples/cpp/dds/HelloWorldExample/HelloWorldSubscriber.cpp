@@ -44,6 +44,8 @@ HelloWorldSubscriber::HelloWorldSubscriber()
 bool HelloWorldSubscriber::init(
         bool use_env)
 {
+    Log::SetVerbosity(Log::Kind::Info);
+
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
     pqos.name("Participant_sub");
     auto factory = DomainParticipantFactory::get_instance();

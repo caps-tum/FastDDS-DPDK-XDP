@@ -42,6 +42,8 @@ HelloWorldPublisher::HelloWorldPublisher()
 bool HelloWorldPublisher::init(
         bool use_env)
 {
+    Log::SetVerbosity(Log::Kind::Info);
+
     hello_.index(0);
     hello_.message("HelloWorld");
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
