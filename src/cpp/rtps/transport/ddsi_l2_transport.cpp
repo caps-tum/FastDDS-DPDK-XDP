@@ -149,3 +149,9 @@ bool eprosima::fastdds::rtps::ddsi_l2_transport::fillUnicastLocator(Locator &loc
     }
     return true;
 }
+
+eprosima::fastdds::rtps::ddsi_l2_transport::ddsi_l2_transport(int32_t transportKind)
+        : TransportInterface(transportKind) {
+    transport_kind_ = transportKind;
+    localMacAddress = userspace_l2_mac_addr{};
+}

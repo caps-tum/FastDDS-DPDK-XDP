@@ -46,34 +46,39 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
         }
 
         uint32_t tx_idx = 0;
-        uint32_t ret = xsk_ring_prod__reserve(&xsk.txFillRing, 1, &tx_idx);
+        uint32_t ret = xsk_ring_prod__reserve(&xsk->txFillRing, 1, &tx_idx);
         if (ret != 1) {
             /* No more transmit slots, drop the packet */
             transport.xsk_free_umem_frame(xsk, frame, true);
             return false;
         }
 
-        xdp_l2_packet_t frame_buffer = xsk_umem__get_data(xsk->umem->buffer, frame);
+        xdp_l2_packet_t frame_buffer = static_cast<xdp_l2_packet_t>(xsk_umem__get_data(xsk->umem->buffer, frame));
 
         // Fill the ethernet header
         assert(dst.port < UINT16_MAX);
         frame_buffer->header.h_proto = ddsi_userspace_l2_get_ethertype_for_port((uint16_t) dst.port);
         static_assert(sizeof(dst.address) == 16 && sizeof(frame_buffer->header.h_dest) == 6, "Copy buffer sizes incorrect.");
         memcpy(frame_buffer->header.h_dest, &dst.address[10], sizeof(frame_buffer->header.h_dest));
-        static_assert(sizeof(frame_buffer->header.h_source) == sizeof(transport.localMacAddress));
+        static_assert(sizeof(frame_buffer->header.h_source) == sizeof(transport.localMacAddress), "Unexpected MAC address buffer sizes.");
         memcpy(frame_buffer->header.h_source, &transport.localMacAddress, sizeof(frame_buffer->header.h_source));
 
         // Fill the data
-        size_t data_copied = ddsi_userspace_copy_iov_to_packet(niov, iov, &frame_buffer->payload, XDP_L2_FRAME_DATA_SIZE);
-        if (data_copied == 0) {
-            xsk_free_umem_frame(xsk, frame, true);
-            return DDS_RETCODE_OUT_OF_RESOURCES;
+        if(total_bytes >= XDP_L2_FRAME_DATA_SIZE) {
+            printf("XDP: Message too big to handle.\n");
+            return false;
         }
+        memcpy(&frame_buffer->payload, data, total_bytes);
+//        size_t data_copied = ddsi_userspace_copy_iov_to_packet(niov, iov, &frame_buffer->payload, XDP_L2_FRAME_DATA_SIZE);
+//        if (data_copied == 0) {
+//            transport.xsk_free_umem_frame(xsk, frame, true);
+//            return false;
+//        }
 
         // Create the TX Descriptor and actually send the message
         struct xdp_desc *txDescriptor = xsk_ring_prod__tx_desc(&xsk->txFillRing, tx_idx);
         txDescriptor->addr = frame;
-        txDescriptor->len = DDSI_USERSPACE_GET_PACKET_SIZE(data_copied, struct xdp_l2_packet);
+        txDescriptor->len = DDSI_USERSPACE_GET_PACKET_SIZE(total_bytes, struct xdp_l2_packet);
         xsk_ring_prod__submit(&xsk->txFillRing, 1);
         pendingTransmits++;
 
@@ -100,7 +105,7 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
 
         if (completed > 0) {
             for (unsigned int i = 0; i < completed; i++) {
-                xsk_free_umem_frame(
+                transport.xsk_free_umem_frame(
                         xsk,
                         *xsk_ring_cons__comp_addr(&xsk->umem->txCompletionRing, indexTXCompletionRing),
                         true
@@ -112,8 +117,7 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
             pendingTransmits -= completed;
         }
 
-        return (ssize_t) data_copied;
-
+        return true;
 
     };
 }

@@ -17,8 +17,8 @@ eprosima::fastdds::rtps::DPDKSenderResource::DPDKSenderResource(DPDKTransport& t
         // TODO
     };
 
-    send_buffers_lambda_ = [this, &transport](
-            const std::vector<NetworkBuffer>& buffers,
+    send_lambda_ = [this, &transport](
+            const uint8_t *buffer,
             uint32_t total_bytes,
             LocatorsIterator* destination_locators_begin,
             LocatorsIterator* destination_locators_end,
@@ -43,13 +43,15 @@ eprosima::fastdds::rtps::DPDKSenderResource::DPDKSenderResource(DPDKTransport& t
         assert(dst.port < UINT16_MAX);
         data_loc->header.ether_type = ddsi_userspace_l2_get_ethertype_for_port(dst.port);
         // VB: Source address: Current interface mac address. Destination address: Broadcast.
-        rte_eth_macaddr_get(0, &data_loc->header.s_addr);
-        memset(data_loc->header.d_addr.addr_bytes, 0xFF, sizeof(data_loc->header.d_addr.addr_bytes));
+        rte_eth_macaddr_get(0, &data_loc->header.RTE_SRC_ADDR);
+        memset(data_loc->header.RTE_DST_ADDR.addr_bytes, 0xFF, sizeof(data_loc->header.RTE_DST_ADDR.addr_bytes));
 
-        for(size_t i = 0; i < buffers.size(); i++) {
-            memcpy(data_loc->payload + bytes_transferred, buffers[i].buffer, buffers[i].size);
-            bytes_transferred += buffers[i].size;
-        }
+//        for(size_t i = 0; i < buffers.size(); i++) {
+//            memcpy(data_loc->payload + bytes_transferred, buffers[i].buffer, buffers[i].size);
+//            bytes_transferred += buffers[i].size;
+//        }
+        memcpy(data_loc->payload + bytes_transferred, buffer, total_bytes);
+        bytes_transferred += total_bytes;
 
         int transmitted = rte_eth_tx_burst(transport.dpdk_port_identifier, transport.dpdk_queue_identifier, &buf, 1);
         rte_pktmbuf_free(buf);

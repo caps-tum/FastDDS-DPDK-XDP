@@ -275,6 +275,7 @@ set(${PROJECT_NAME}_source_files
         rtps/transport/ddsi_XDPTransport.h
         rtps/transport/ddsi_XDPTransportDescriptor.h
         rtps/transport/ddsi_XDPTransportDescriptor.cpp
+        rtps/transport/ddsi_XDPSenderResource.cpp
 )
 
 # Statistics support

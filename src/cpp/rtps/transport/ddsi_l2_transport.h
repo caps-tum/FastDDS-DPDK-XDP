@@ -12,6 +12,7 @@
 #include <rte_eal.h>
 #include "DPDKTransportDescriptor.h"
 #include <fastdds/rtps/transport/TransportInterface.h>
+#include "ddsi_UserspaceL2Utils.h"
 
 namespace eprosima {
 namespace fastdds {
@@ -21,6 +22,8 @@ namespace rtps {
 class ddsi_l2_transport : public TransportInterface {
 
 public:
+    ddsi_l2_transport(int32_t transportKind);
+
     bool IsLocatorSupported(const Locator &locator) const override;
 
     int32_t transport_kind_ = 0xFF;

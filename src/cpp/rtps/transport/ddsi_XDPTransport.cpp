@@ -3,8 +3,10 @@
 //
 
 #include "ddsi_XDPTransport.h"
+#include "ddsi_XDPSenderResource.h"
 
 #if defined(__linux) && !LWIP_SOCKET
+
 #include <ifaddrs.h>
 #include <string.h>
 #include <assert.h>
@@ -18,8 +20,8 @@
 #include <sys/resource.h>
 #include <net/if.h>
 #include <csignal>
-
-#define NUM_FRAMES         4096
+#include <fastrtps/utils/IPFinder.h>
+#include <sys/ioctl.h>
 
 namespace eprosima {
 namespace fastdds {
@@ -27,34 +29,12 @@ namespace rtps {
 
 static struct xdp_program *prog;
 
-typedef struct {
-    uint64_t umem_frame_addr[NUM_FRAMES / 2];
-    uint32_t umem_frame_free;
-} umem_free_frame_stack;
-
-struct xsk_socket_info {
-    // Documentation on rings: https://www.kernel.org/doc/html/latest/networking/af_xdp.html
-    // The UMEM uses two rings: FILL and COMPLETION. Each socket associated with the UMEM must have an RX queue, TX
-    // queue or both. Say, that there is a setup with four sockets (all doing TX and RX). Then there will be one FILL
-    // ring, one COMPLETION ring, four TX rings and four RX rings.
-    struct xsk_ring_cons rxCompletionRing;
-    struct xsk_ring_prod txFillRing;
-    struct xsk_umem_info *umem;
-    struct xsk_socket *xsk;
-
-    umem_free_frame_stack umem_frames_tx;
-    umem_free_frame_stack umem_frames_rx;
-};
-
-
-static inline __u32 xsk_ring_prod__free(struct xsk_ring_prod *r)
-{
+static inline __u32 xsk_ring_prod__free(struct xsk_ring_prod *r) {
     r->cached_cons = *r->consumer + r->size;
     return r->cached_cons - r->cached_prod;
 }
 
-static struct xsk_umem_info *configure_xsk_umem(void *buffer, uint64_t size)
-{
+static struct xsk_umem_info *configure_xsk_umem(void *buffer, uint64_t size) {
     struct xsk_umem_info *umem;
     int ret;
 
@@ -72,12 +52,11 @@ static struct xsk_umem_info *configure_xsk_umem(void *buffer, uint64_t size)
     return umem;
 }
 
-uint64_t ddsi_XDPTransport::xsk_alloc_umem_frame(struct xsk_socket_info *xsk, bool is_tx)
-{
+uint64_t ddsi_XDPTransport::xsk_alloc_umem_frame(struct xsk_socket_info *xsk, bool is_tx) {
     umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
     uint64_t frame;
     if (freeFrameStack->umem_frame_free == 0) {
-        fprintf(stderr, "XDP UMEM: 1 %s frame allocation FAILED.\n", is_tx?"TX":"RX");
+        fprintf(stderr, "XDP UMEM: 1 %s frame allocation FAILED.\n", is_tx ? "TX" : "RX");
         return INVALID_UMEM_FRAME;
     }
 
@@ -89,10 +68,10 @@ uint64_t ddsi_XDPTransport::xsk_alloc_umem_frame(struct xsk_socket_info *xsk, bo
     return frame;
 }
 
-void ddsi_XDPTransport::xsk_free_umem_frame(struct xsk_socket_info *xsk, uint64_t frame, bool is_tx)
-{
+void ddsi_XDPTransport::xsk_free_umem_frame(struct xsk_socket_info *xsk, uint64_t frame, bool is_tx) {
     umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
-    assert(freeFrameStack->umem_frame_free < sizeof(freeFrameStack->umem_frame_addr) / sizeof(freeFrameStack->umem_frame_addr[0]));
+    assert(freeFrameStack->umem_frame_free <
+           sizeof(freeFrameStack->umem_frame_addr) / sizeof(freeFrameStack->umem_frame_addr[0]));
 
     freeFrameStack->umem_frame_addr[freeFrameStack->umem_frame_free] = frame;
     freeFrameStack->umem_frame_free++;
@@ -100,14 +79,12 @@ void ddsi_XDPTransport::xsk_free_umem_frame(struct xsk_socket_info *xsk, uint64_
     assert(frame >= 0 && frame < NUM_FRAMES * XDP_L2_FRAME_SIZE);
 }
 
-static uint64_t xsk_umem_free_frames(struct xsk_socket_info *xsk, bool is_tx)
-{
+static uint64_t xsk_umem_free_frames(struct xsk_socket_info *xsk, bool is_tx) {
     umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
     return freeFrameStack->umem_frame_free;
 }
 
-struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_info *umem)
-{
+struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_info *umem) {
     struct xsk_socket_config xsk_cfg;
     struct xsk_socket_info *xsk_info;
     int ret;
@@ -162,7 +139,7 @@ struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_
         return NULL;
     }
 
-    for (unsigned int i = 0; i < initialRXNumAllocacted; i ++) {
+    for (unsigned int i = 0; i < initialRXNumAllocacted; i++) {
         *xsk_ring_prod__fill_addr(&xsk_info->umem->rxFillRing, rxFillRingIndex) = xsk_alloc_umem_frame(xsk_info, false);
         rxFillRingIndex++;
     }
@@ -173,15 +150,15 @@ struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_
 
 bool ddsi_XDPTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
     sender_resource_list.push_back(
-            std::unique_ptr<ddsi_XDPSenderResource>(new DPDKSenderResource(*this))
+            std::unique_ptr<ddsi_XDPSenderResource>(new ddsi_XDPSenderResource(*this))
     );
     return true;
 }
 
 
 bool ddsi_XDPTransport::OpenInputChannel(const Locator &locator, TransportReceiverInterface *anInterface,
-                                     uint32_t maxMessageSize) {
-    if(receiverInterface != nullptr) {
+                                         uint32_t maxMessageSize) {
+    if (receiverInterface != nullptr) {
         rte_exit(RTE_LOG_ERR, "Already registered a receiver interface.");
     }
     receiverInterface = anInterface;
@@ -189,15 +166,31 @@ bool ddsi_XDPTransport::OpenInputChannel(const Locator &locator, TransportReceiv
     return true;
 }
 
+static uint64_t xsk_alloc_umem_frame(struct xsk_socket_info *xsk, bool is_tx) {
+    umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
+    uint64_t frame;
+    if (freeFrameStack->umem_frame_free == 0) {
+        fprintf(stderr, "XDP UMEM: 1 %s frame allocation FAILED.\n", is_tx ? "TX" : "RX");
+        return INVALID_UMEM_FRAME;
+    }
 
-void ddsi_XDPTransport::processIncomingData() const {
+    freeFrameStack->umem_frame_free--;
+    frame = freeFrameStack->umem_frame_addr[freeFrameStack->umem_frame_free];
+    freeFrameStack->umem_frame_addr[freeFrameStack->umem_frame_free] = INVALID_UMEM_FRAME;
+//    fprintf(stderr, "XDP UMEM: 1 %s frame allocated: %lu.\n", is_tx?"TX":"RX", frame);
+    assert(frame >= 0 && frame < NUM_FRAMES * XDP_L2_FRAME_SIZE);
+    return frame;
+}
+
+
+void ddsi_XDPTransport::processIncomingData() {
 
     struct xsk_socket_info *xsk = xskSocketInfo;
     unsigned int packetsReceived, i;
     uint32_t idx_rx = 0, idx_fq = 0;
     int ret;
 
-    while(true) {
+    while (true) {
 
         for (uint8_t tries = 0; tries < 200; tries++) {
             packetsReceived = xsk_ring_cons__peek(&xsk->rxCompletionRing, 1, &idx_rx);
@@ -246,12 +239,12 @@ void ddsi_XDPTransport::processIncomingData() const {
             DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.h_source);
             bytes_received = DDSI_USERSPACE_GET_PAYLOAD_SIZE(rxDescriptor->len, struct xdp_l2_packet);
             receiverInterface->OnDataReceived(
-                packet->payload,
-                bytes_received,
-                localLoc,
-
-            )
-            memcpy(buf, packet->payload, bytes_received);
+                    packet->payload,
+                    bytes_received,
+                    localLoc,
+                    srcloc
+            );
+//            memcpy(buf, packet->payload, bytes_received);
         }
 
         xsk_free_umem_frame(xsk, rxDescriptor->addr, false);
@@ -271,68 +264,103 @@ void ddsi_XDPTransport::processIncomingData() const {
     }
 }
 
-static userspace_l2_mac_addr get_xdp_interface_mac_address(const char* ifname) {
+// ChatGPT
+void get_mac_address(const std::string &interface_name, userspace_l2_mac_addr &mac_addr) {
+    int fd;
+    struct ifreq ifr;
+    char mac_address[18];
+
+    fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (fd == -1) {
+        perror("socket");
+        return;
+    }
+
+    strncpy(ifr.ifr_name, interface_name.c_str(), IFNAMSIZ - 1);
+    if (ioctl(fd, SIOCGIFHWADDR, &ifr) == -1) {
+        perror("ioctl");
+        close(fd);
+        return;
+    }
+
+    close(fd);
+
+    memcpy(mac_addr.bytes, ifr.ifr_hwaddr.sa_data, sizeof(userspace_l2_mac_addr));
+}
+
+static userspace_l2_mac_addr get_xdp_interface_mac_address(const char *ifname) {
     userspace_l2_mac_addr address;
-    int retval = ddsrt_eth_get_mac_addr(ifname, address.bytes);
-    if (retval != DDS_RETCODE_OK) {
-        abort();
-    }
+    get_mac_address(ifname, address);
     return address;
+
+//    int retval = ddsrt_eth_get_mac_addr(ifname, address.bytes);
+//    if (retval != DDS_RETCODE_OK) {
+//        abort();
+//    }
+//    return address;
 }
 
-static dds_return_t ddsi_xdp_l2_create_conn (struct ddsi_tran_conn **conn_out, struct ddsi_tran_factory * fact, uint32_t port, const struct ddsi_tran_qos *qos)
-{
-//    ddsrt_socket_t sock;
-//    dds_return_t rc;
-    ddsi_xdp_l2_conn_t  uc = NULL;
-//    struct sockaddr_ll addr;
-    bool mcast = (qos->m_purpose == DDSI_TRAN_QOS_RECV_MC);
-    assert(mcast);
-    struct ddsi_domaingv const * const gv = fact->gv;
-    struct ddsi_network_interface const * const intf = qos->m_interface ? qos->m_interface : &gv->interfaces[0];
+bool ddsi_XDPTransport::OpenOutputChannels(SendResourceList &sender_resource_list,
+                                           const fastrtps::rtps::LocatorSelectorEntry &locator_selector_entry) {
+//    if(!ddsi_userspace_l2_is_valid_port(port)) {
+//        DDS_CERROR(&fact->gv->logconfig, "ddsi_dpdk2_l2_create_conn: DDSI requested too large port number %i.", port);
+//        return DDS_RETCODE_ERROR;
+//    }
 
-    /* If port is zero, need to create dynamic port */
-    // TODO: It looks like raweth uses ethernet type as port number
-    assert(port < UINT16_MAX);
-    if(!ddsi_userspace_l2_is_valid_port(port)) {
-        DDS_CERROR(&fact->gv->logconfig, "ddsi_dpdk2_l2_create_conn: DDSI requested too large port number %i.", port);
-        return DDS_RETCODE_ERROR;
-    }
-
-    if ((uc = (ddsi_xdp_l2_conn_t) ddsrt_malloc (sizeof (*uc))) == NULL)
-    {
-//        ddsrt_close(sock);
-        return DDS_RETCODE_ERROR;
-    }
-
-    memset (uc, 0, sizeof (*uc));
-//    uc->m_sock = sock;
-//    uc->m_ifindex = addr.sll_ifindex;
-    ddsi_factory_conn_init (fact, intf, &uc->m_base);
-    uc->m_base.m_base.m_port = port;
-    uc->m_base.m_base.m_trantype = DDSI_TRAN_CONN;
-    uc->m_base.m_base.m_multicast = mcast;
-    uc->m_base.m_base.m_handle_fn = ddsi_dpdk_l2_conn_handle;
-    uc->m_base.m_locator_fn = ddsi_xdp_l2_conn_locator;
-    uc->m_base.m_read_fn = ddsi_xdp_l2_conn_read;
-    uc->m_base.m_write_fn = ddsi_xdp_l2_conn_write;
-    uc->m_base.m_disable_multiplexing_fn = 0;
-
-    DDS_CTRACE (&fact->gv->logconfig, "ddsi_xdp_l2_create_conn %s socket port %u\n", mcast ? "multicast" : "unicast", uc->m_base.m_base.m_port);
-    *conn_out = &uc->m_base;
-    printf("XDP: Connection opened on port %i\n", port);
-    return DDS_RETCODE_OK;
+//    printf("XDP: Connection opened on port %i\n", locator_selector_entry);
+    printf("XDP: Connection opened.\n");
+    return true;
 }
 
+//static dds_return_t ddsi_xdp_l2_create_conn (struct ddsi_tran_conn **conn_out, struct ddsi_tran_factory * fact, uint32_t port, const struct ddsi_tran_qos *qos)
+//{
+////    ddsrt_socket_t sock;
+////    dds_return_t rc;
+//    ddsi_xdp_l2_conn_t  uc = NULL;
+////    struct sockaddr_ll addr;
+//    bool mcast = (qos->m_purpose == DDSI_TRAN_QOS_RECV_MC);
+//    assert(mcast);
+//    struct ddsi_domaingv const * const gv = fact->gv;
+//    struct ddsi_network_interface const * const intf = qos->m_interface ? qos->m_interface : &gv->interfaces[0];
+//
+//    /* If port is zero, need to create dynamic port */
+//    // TODO: It looks like raweth uses ethernet type as port number
+//    assert(port < UINT16_MAX);
+//    if(!ddsi_userspace_l2_is_valid_port(port)) {
+//        DDS_CERROR(&fact->gv->logconfig, "ddsi_dpdk2_l2_create_conn: DDSI requested too large port number %i.", port);
+//        return DDS_RETCODE_ERROR;
+//    }
+//
+//    if ((uc = (ddsi_xdp_l2_conn_t) ddsrt_malloc (sizeof (*uc))) == NULL)
+//    {
+////        ddsrt_close(sock);
+//        return DDS_RETCODE_ERROR;
+//    }
+//
+//    memset (uc, 0, sizeof (*uc));
+////    uc->m_sock = sock;
+////    uc->m_ifindex = addr.sll_ifindex;
+//    ddsi_factory_conn_init (fact, intf, &uc->m_base);
+//    uc->m_base.m_base.m_port = port;
+//    uc->m_base.m_base.m_trantype = DDSI_TRAN_CONN;
+//    uc->m_base.m_base.m_multicast = mcast;
+//    uc->m_base.m_base.m_handle_fn = ddsi_dpdk_l2_conn_handle;
+//    uc->m_base.m_locator_fn = ddsi_xdp_l2_conn_locator;
+//    uc->m_base.m_read_fn = ddsi_xdp_l2_conn_read;
+//    uc->m_base.m_write_fn = ddsi_xdp_l2_conn_write;
+//    uc->m_base.m_disable_multiplexing_fn = 0;
+//
+//    DDS_CTRACE (&fact->gv->logconfig, "ddsi_xdp_l2_create_conn %s socket port %u\n", mcast ? "multicast" : "unicast", uc->m_base.m_base.m_port);
+//    *conn_out = &uc->m_base;
+//    printf("XDP: Connection opened on port %i\n", port);
+//    return DDS_RETCODE_OK;
+//}
 
-static enum ddsi_locator_from_string_result ddsi_xdp_l2_address_from_string (const struct ddsi_tran_factory *tran, ddsi_locator_t *loc, const char *str)
-{
-    return ddsi_userspace_l2_address_from_string(tran, loc, str, DDSI_LOCATOR_KIND_XDP_L2);
-}
 
-static void remove_xdp_programs(int ifindex, const char* ifname) {// VB: Remove XDP program
+static void remove_xdp_programs(int ifindex, const char *ifname) {// VB: Remove XDP program
     struct xdp_multiprog *mp = NULL;
     DECLARE_LIBBPF_OPTS(bpf_object_open_opts, opts);
+    int err = 0;
 
     mp = xdp_multiprog__get_from_ifindex(ifindex);
     if (libxdp_get_error(mp)) {
@@ -345,7 +373,7 @@ static void remove_xdp_programs(int ifindex, const char* ifname) {// VB: Remove 
     }
 
     // VB: Unload all == true
-    int err = xdp_multiprog__detach(mp);
+    err = xdp_multiprog__detach(mp);
     if (err) {
         fprintf(stderr, "XDP: Unable to detach XDP program: %s\n", strerror(-err));
         goto out;
@@ -355,24 +383,24 @@ static void remove_xdp_programs(int ifindex, const char* ifname) {// VB: Remove 
     xdp_multiprog__close(mp);
 }
 
-static void ddsi_xdp_l2_deinit(struct ddsi_tran_factory * fact)
-{
-    xdp_transport_factory_t factory = (xdp_transport_factory_t) fact;
-    DDS_CLOG (DDS_LC_CONFIG, &fact->gv->logconfig, "dpdk l2 de-initialized\n");
+void ddsi_XDPTransport::ddsi_xdp_l2_deinit() {
+    printf("dpdk l2 de-initialized\n");
 
     /* Cleanup */
-    xsk_socket__delete(factory->xskSocketInfo->xsk);
-    if(factory->xskSocketInfo->umem != NULL) {
-        xsk_umem__delete(factory->xskSocketInfo->umem->umem);
+    xsk_socket__delete(xskSocketInfo->xsk);
+    if (xskSocketInfo->umem != NULL) {
+        xsk_umem__delete(xskSocketInfo->umem->umem);
     }
-    remove_xdp_programs(factory->ifindex, factory->ifname);
+    remove_xdp_programs(ifindex, ifname);
+}
 
-    ddsrt_free (fact);
+void ddsi_XDPTransport::shutdown() {
+    ddsi_xdp_l2_deinit();
+    TransportInterface::shutdown();
 }
 
 
 bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) {
-{
     // XDP setup
     void *packet_buffer;
     uint64_t packet_buffer_size;
@@ -410,7 +438,7 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
 //        } else {
 //            prog = xdp_program__open_file(cfg.filename, NULL, &opts);
 //        }
-    const char* xdp_module_path = "./lib/fastdds_xdp/FastDDS-EXT/build/ddsi_xdp_l2_kern.o";
+    const char *xdp_module_path = "./lib/fastdds_xdp/FastDDS-EXT/build/ddsi_xdp_l2_kern.o";
     printf("Assuming XDP module path: %s\n", xdp_module_path);
     prog = xdp_program__open_file(xdp_module_path, NULL, &opts);
     err = libxdp_get_error(prog);
@@ -476,6 +504,30 @@ bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, c
     return true;
 }
 
-}}}
+bool ddsi_XDPTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &locator) const {
+    assert(locator.kind == transport_kind_);
+    return true;
+}
+
+bool ddsi_XDPTransport::CloseInputChannel(const Locator &locator) {
+    return false;
+}
+
+TransportDescriptorInterface *ddsi_XDPTransport::get_configuration() {
+    return (TransportDescriptorInterface *)transportDescriptor;
+}
+
+uint32_t ddsi_XDPTransport::max_recv_buffer_size() const {
+    return 0;
+}
+
+ddsi_XDPTransport::ddsi_XDPTransport(int32_t transportKind, const ddsi_XDPTransportDescriptor &descriptor)
+        : ddsi_l2_transport(transportKind), transportDescriptor(&descriptor) {
+
+}
+
+}
+}
+}
 
 #endif

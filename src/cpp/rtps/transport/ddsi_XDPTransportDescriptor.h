@@ -2,10 +2,9 @@
 // Created by Vincent Bode on 08/07/2024.
 //
 
-#ifndef FASTDDS_DPDKTRANSPORTDESCRIPTOR_H
-#define FASTDDS_DPDKTRANSPORTDESCRIPTOR_H
+#ifndef FASTDDS_XDPTRANSPORTDESCRIPTOR_H
+#define FASTDDS_XDPTRANSPORTDESCRIPTOR_H
 
-#include "fastdds/rtps/transport/TransportDescriptorInterface.hpp"
 #include "fastdds/rtps/transport/PortBasedTransportDescriptor.hpp"
 
 namespace eprosima {
@@ -34,4 +33,4 @@ namespace eprosima {
     }
 }
 
-#endif //FASTDDS_DPDKTRANSPORTDESCRIPTOR_H
+#endif //FASTDDS_XDPTRANSPORTDESCRIPTOR_H

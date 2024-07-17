@@ -5,7 +5,6 @@
 #ifndef FASTDDS_DPDKTRANSPORTDESCRIPTOR_H
 #define FASTDDS_DPDKTRANSPORTDESCRIPTOR_H
 
-#include "fastdds/rtps/transport/TransportDescriptorInterface.hpp"
 #include "fastdds/rtps/transport/PortBasedTransportDescriptor.hpp"
 
 namespace eprosima {

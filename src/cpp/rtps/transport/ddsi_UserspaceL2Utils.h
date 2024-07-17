@@ -13,6 +13,9 @@
 #define DDSI_USERSPACE_L2_ETHER_TYPE_BASE 0xA000
 #define DDSI_USERSPACE_L2_ETHER_TYPE_MAX 0xBFFF
 
+#define RTE_SRC_ADDR src_addr
+#define RTE_DST_ADDR dst_addr
+
 typedef struct {
     unsigned char bytes[6];
 } userspace_l2_mac_addr;
@@ -53,6 +56,16 @@ static inline void ddsi_userspace_copy_mac_address_and_zero__(void* dest, size_t
     static_assert(sizeof(destArray) == offset + sizeof(*macAddr), "Unexpected struct sizes in userspace utils macro."); \
     ddsi_userspace_copy_mac_address_and_zero__(destArray, offset, macAddr); \
 }
+
+
+// Packet utils
+static inline uint16_t ddsi_userspace_get_packet_size__(size_t dataSize, size_t payloadOffset) {
+    if(dataSize + payloadOffset > UINT16_MAX) {
+        return 0;
+    }
+    return (uint16_t)(dataSize + payloadOffset);
+}
+#define DDSI_USERSPACE_GET_PACKET_SIZE(dataSize, type) ddsi_userspace_get_packet_size__(dataSize, offsetof(type, payload))
 
 
 #endif //FASTDDS_USERSPACEL2UTILS_H

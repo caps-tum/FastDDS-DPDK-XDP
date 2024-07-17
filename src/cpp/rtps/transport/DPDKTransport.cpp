@@ -26,8 +26,7 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-DPDKTransport::DPDKTransport(const DPDKTransportDescriptor &descriptor) : TransportInterface(
-        transport_kind_) {
+DPDKTransport::DPDKTransport(const DPDKTransportDescriptor &descriptor) : ddsi_l2_transport(DPDK_TRANSPORT_KIND) {
     transportDescriptor = &descriptor;
 }
 
@@ -216,7 +215,7 @@ void DPDKTransport::processIncomingData() {
         Locator srcloc{};
         srcloc.kind = transport_kind_;
         srcloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.ether_type);
-        DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.s_addr.addr_bytes);
+        DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.RTE_SRC_ADDR.addr_bytes);
 
         receiverInterface->OnDataReceived(
                 (unsigned char *) packet->payload,
@@ -242,7 +241,7 @@ bool DPDKTransport::CloseInputChannel(const Locator &locator) {
 }
 
 TransportDescriptorInterface *DPDKTransport::get_configuration() {
-    return transportDescriptor;
+    return (TransportDescriptorInterface *)transportDescriptor;
 }
 
 uint32_t DPDKTransport::max_recv_buffer_size() const {
