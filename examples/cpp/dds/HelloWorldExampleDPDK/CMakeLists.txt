@@ -14,7 +14,7 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project(HelloWorldExampleXDP VERSION 1 LANGUAGES CXX)
+project(HelloWorldExampleDPDK VERSION 1 LANGUAGES CXX)
 
 # Find requirements
 if(NOT fastcdr_FOUND)
@@ -46,11 +46,11 @@ if(WIN32)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
-add_executable(DDSHelloWorldExampleXDP ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CXX} ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CPP})
-target_compile_definitions(DDSHelloWorldExampleXDP PRIVATE
+add_executable(DDSHelloWorldExampleDPDK ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CXX} ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CPP})
+target_compile_definitions(DDSHelloWorldExampleDPDK PRIVATE
     $<$<AND:$<NOT:$<BOOL:${WIN32}>>,$<STREQUAL:"${CMAKE_BUILD_TYPE}","Debug">>:__DEBUG>
     $<$<BOOL:${INTERNAL_DEBUG}>:__INTERNALDEBUG> # Internal debug activated.
     )
-target_link_libraries(DDSHelloWorldExampleXDP fastrtps fastcdr foonathan_memory)
-install(TARGETS DDSHelloWorldExampleXDP
-    RUNTIME DESTINATION examples/cpp/dds/HelloWorldExampleXDP/${BIN_INSTALL_DIR})
+target_link_libraries(DDSHelloWorldExampleDPDK fastrtps fastcdr foonathan_memory)
+install(TARGETS DDSHelloWorldExampleDPDK
+    RUNTIME DESTINATION examples/cpp/dds/HelloWorldExampleDPDK/${BIN_INSTALL_DIR})

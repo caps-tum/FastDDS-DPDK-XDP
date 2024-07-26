@@ -11,9 +11,9 @@
 #include <rte_ethdev.h>
 #include <rte_eal.h>
 #include "ddsi_UserspaceL2Utils.h"
-#include "DPDKSenderResource.h"
-#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
-#include "DPDKTransport.h"
+#include "ddsi_DPDKSenderResource.h"
+#include "fastdds/rtps/transport/ddsi_DPDKTransportDescriptor.h"
+#include "ddsi_DPDKTransport.h"
 #include "ddsi_l2_transport.h"
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::IsLocatorSupported(const Locator &locator) const {

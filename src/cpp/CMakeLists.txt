@@ -262,12 +262,12 @@ set(${PROJECT_NAME}_source_files
     statistics/fastdds/domain/DomainParticipant.cpp
     statistics/fastdds/publisher/qos/DataWriterQos.cpp
     statistics/fastdds/subscriber/qos/DataReaderQos.cpp
-        rtps/transport/DPDKTransport.cpp
-        rtps/transport/DPDKTransport.h
-        rtps/transport/DPDKTransportDescriptor.cpp
-        ../../include/fastdds/rtps/transport/DPDKTransportDescriptor.h
-        rtps/transport/DPDKSenderResource.cpp
-        rtps/transport/DPDKSenderResource.h
+        rtps/transport/ddsi_DPDKTransport.cpp
+        rtps/transport/ddsi_DPDKTransport.h
+        rtps/transport/ddsi_DPDKTransportDescriptor.cpp
+        ../../include/fastdds/rtps/transport/ddsi_DPDKTransportDescriptor.h
+        rtps/transport/ddsi_DPDKSenderResource.cpp
+        rtps/transport/ddsi_DPDKSenderResource.h
         rtps/transport/ddsi_UserspaceL2Utils.h
         rtps/transport/ddsi_l2_transport.cpp
         rtps/transport/ddsi_l2_transport.h

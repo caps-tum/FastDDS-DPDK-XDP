@@ -3,16 +3,16 @@
 //
 
 #include <rte_ethdev.h>
-#include "DPDKSenderResource.h"
+#include "ddsi_DPDKSenderResource.h"
 #include "ddsi_UserspaceL2Utils.h"
-#include "DPDKTransport.h"
+#include "ddsi_DPDKTransport.h"
 
 namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
 
-eprosima::fastdds::rtps::DPDKSenderResource::DPDKSenderResource(DPDKTransport& transport) : SenderResource(DPDK_TRANSPORT_KIND) {
+eprosima::fastdds::rtps::ddsi_DPDKSenderResource::ddsi_DPDKSenderResource(ddsi_DPDKTransport& transport) : SenderResource(DPDK_TRANSPORT_KIND) {
     clean_up = [this](){
         // TODO
     };

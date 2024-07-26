@@ -17,11 +17,11 @@ namespace eprosima {
 
 
 
-            class DPDKTransportDescriptor : public PortBasedTransportDescriptor {
+            class ddsi_DPDKTransportDescriptor : public PortBasedTransportDescriptor {
 
             public:
 
-                DPDKTransportDescriptor();
+                ddsi_DPDKTransportDescriptor();
 
                 TransportInterface *create_transport() const override;
 

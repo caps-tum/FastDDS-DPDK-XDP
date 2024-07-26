@@ -42,7 +42,7 @@
 
 #include <rtps/network/utils/netmask_filter.hpp>
 #include <rtps/xmlparser/XMLParserUtils.hpp>
-#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/ddsi_DPDKTransportDescriptor.h"
 
 namespace eprosima {
 namespace fastrtps {
@@ -401,7 +401,7 @@ XMLP_ret XMLParser::parseXMLTransportData(
     }
     else if (sType == EXTERN_DPDK)
     {
-        pDescriptor = std::make_shared<fastdds::rtps::DPDKTransportDescriptor>();
+        pDescriptor = std::make_shared<fastdds::rtps::ddsi_DPDKTransportDescriptor>();
     }
     else
     {

@@ -6,7 +6,7 @@
 #define FASTDDS_DPDKTRANSPORT_H
 
 #include <fastdds/rtps/transport/TransportInterface.h>
-#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
+#include "fastdds/rtps/transport/ddsi_DPDKTransportDescriptor.h"
 #include "ddsi_l2_transport.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include <rte_eal.h>
@@ -37,7 +37,7 @@ typedef struct dpdk_l2_packet {
     unsigned char payload[0];
 } *dpdk_l2_packet_t;
 
-class DPDKTransport : public ddsi_l2_transport {
+class ddsi_DPDKTransport : public ddsi_l2_transport {
 
 protected:
 
@@ -48,7 +48,7 @@ protected:
 
 public:
 
-    explicit DPDKTransport(const DPDKTransportDescriptor &descriptor);
+    explicit ddsi_DPDKTransport(const ddsi_DPDKTransportDescriptor &descriptor);
 
     bool init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) override;
 
@@ -76,7 +76,7 @@ public:
 
     void processIncomingData();
 
-    const DPDKTransportDescriptor *transportDescriptor;
+    const ddsi_DPDKTransportDescriptor *transportDescriptor;
 };
 
 

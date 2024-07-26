@@ -2,9 +2,9 @@
 // Created by Vincent Bode on 08/07/2024.
 //
 
-#include "DPDKTransport.h"
-#include "fastdds/rtps/transport/DPDKTransportDescriptor.h"
-#include "DPDKSenderResource.h"
+#include "ddsi_DPDKTransport.h"
+#include "fastdds/rtps/transport/ddsi_DPDKTransportDescriptor.h"
+#include "ddsi_DPDKSenderResource.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include "ddsi_l2_transport.h"
 #include <rte_eal.h>
@@ -26,12 +26,12 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-DPDKTransport::DPDKTransport(const DPDKTransportDescriptor &descriptor) : ddsi_l2_transport(DPDK_TRANSPORT_KIND) {
+ddsi_DPDKTransport::ddsi_DPDKTransport(const ddsi_DPDKTransportDescriptor &descriptor) : ddsi_l2_transport(DPDK_TRANSPORT_KIND) {
     transportDescriptor = &descriptor;
 }
 
 // Implemented with help from here: https://doc.dpdk.org/guides/sample_app_ug/skeleton.html
-int DPDKTransport::dpdk_port_init(uint16_t port, struct rte_mempool *rx_mbuf_pool) {
+int ddsi_DPDKTransport::dpdk_port_init(uint16_t port, struct rte_mempool *rx_mbuf_pool) {
     struct rte_eth_conf port_conf{};
     const uint16_t rx_rings = 1, tx_rings = 1;
     uint16_t nb_rxd = RX_RING_SIZE;
@@ -117,7 +117,7 @@ static struct rte_ether_addr get_dpdk_interface_mac_address(uint16_t portId) {
     return addr;
 }
 
-bool DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) {
+bool ddsi_DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) {
 
 
     // We need to initialize EAL
@@ -164,12 +164,12 @@ bool DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const
     return true;
 }
 
-bool DPDKTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &locator) const {
+bool ddsi_DPDKTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &locator) const {
     assert(locator.kind == transport_kind_);
     return receiverInterface != nullptr;
 }
 
-bool DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
+bool ddsi_DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
     assert(locator.kind == transport_kind_);
     printf(
             "XDP: Connection opened on locator %02x:%02x:%02x:%02x:%02x:%02x port %i\n",
@@ -179,13 +179,13 @@ bool DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, co
     output_channels_open++;
     assert(output_channels_open == 1);
     sender_resource_list.push_back(
-            std::unique_ptr<DPDKSenderResource>(new DPDKSenderResource(*this))
+            std::unique_ptr<ddsi_DPDKSenderResource>(new ddsi_DPDKSenderResource(*this))
     );
     return true;
 }
 
-bool DPDKTransport::OpenInputChannel(const Locator &locator, TransportReceiverInterface *anInterface,
-                                     uint32_t maxMessageSize) {
+bool ddsi_DPDKTransport::OpenInputChannel(const Locator &locator, TransportReceiverInterface *anInterface,
+                                          uint32_t maxMessageSize) {
     if (receiverInterface != nullptr) {
         rte_exit(RTE_LOG_ERR, "Already registered a receiver interface.");
     }
@@ -205,7 +205,7 @@ static uint16_t calculate_payload_size(struct rte_mbuf *const buf) {
 }
 
 
-void DPDKTransport::processIncomingData() {
+void ddsi_DPDKTransport::processIncomingData() {
     /* Get burst of RX packets, from first port of pair. */
     struct rte_mbuf *mbuf[1];
     uint16_t number_received;
@@ -257,15 +257,15 @@ void DPDKTransport::processIncomingData() {
     }
 }
 
-bool DPDKTransport::CloseInputChannel(const Locator &locator) {
+bool ddsi_DPDKTransport::CloseInputChannel(const Locator &locator) {
     return false;
 }
 
-TransportDescriptorInterface *DPDKTransport::get_configuration() {
+TransportDescriptorInterface *ddsi_DPDKTransport::get_configuration() {
     return (TransportDescriptorInterface *)transportDescriptor;
 }
 
-uint32_t DPDKTransport::max_recv_buffer_size() const {
+uint32_t ddsi_DPDKTransport::max_recv_buffer_size() const {
     return 0;
 }
 
