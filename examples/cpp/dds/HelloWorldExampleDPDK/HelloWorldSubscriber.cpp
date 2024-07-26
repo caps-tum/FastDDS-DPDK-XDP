@@ -48,7 +48,7 @@ bool HelloWorldSubscriber::init()
 //    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
-    DomainParticipantQos pqos;
+    DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
 //    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
 //    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
 //    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
@@ -62,7 +62,7 @@ bool HelloWorldSubscriber::init()
     auto sm_transport = std::make_shared<ddsi_DPDKTransportDescriptor>();
     pqos.transport().user_transports.push_back(sm_transport);
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, PARTICIPANT_QOS_DEFAULT);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
 
     if (participant_ == nullptr)
     {
