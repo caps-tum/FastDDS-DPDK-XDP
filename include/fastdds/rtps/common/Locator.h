@@ -346,6 +346,16 @@ inline std::ostream& operator <<(
             output << "SHM:[";
             break;
         }
+        case LOCATOR_KIND_XDP:
+        {
+            output << "XDP:[";
+            break;
+        }
+        case LOCATOR_KIND_DPDK:
+        {
+            output << "DPDK:[";
+            break;
+        }
         default:
         {
             output << "Invalid_locator:[_]:0";
