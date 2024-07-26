@@ -42,10 +42,10 @@ HelloWorldSubscriber::HelloWorldSubscriber()
 
 bool HelloWorldSubscriber::init()
 {
-    Log::Reset();
-    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
-    Log::RegisterConsumer(std::move(stdout_consumer));
-    Log::SetVerbosity(Log::Kind::Info);
+//    Log::Reset();
+//    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
+//    Log::RegisterConsumer(std::move(stdout_consumer));
+//    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
@@ -62,7 +62,7 @@ bool HelloWorldSubscriber::init()
     auto sm_transport = std::make_shared<ddsi_XDPTransportDescriptor>();
     pqos.transport().user_transports.push_back(sm_transport);
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, PARTICIPANT_QOS_DEFAULT);
 
     if (participant_ == nullptr)
     {
@@ -157,6 +157,7 @@ void HelloWorldSubscriber::SubListener::on_data_available(
         {
             samples_++;
             const size_t data_size = hello_->data().size();
+            std::cout << "===== MESSAGE RECEIVED =====" << std::endl;
             // Print your structure data here.
             std::cout << "Message " << hello_->message() << " " << hello_->index()
                       << " RECEIVED With " << data_size << "(bytes) of Data. DataEnd = "

@@ -146,9 +146,20 @@ struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_
 }
 
 bool ddsi_XDPTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
-    sender_resource_list.push_back(
-            std::unique_ptr<ddsi_XDPSenderResource>(new ddsi_XDPSenderResource(*this))
+    assert(locator.kind == transport_kind_);
+    printf(
+            "XDP: Connection %i opened on locator %02x:%02x:%02x:%02x:%02x:%02x port %i\n",
+            output_channels_open,
+            locator.address[10], locator.address[11], locator.address[12], locator.address[13], locator.address[14], locator.address[15],
+            locator.port
     );
+    if(output_channels_open == 0) {
+        sender_resource_list.push_back(
+                std::unique_ptr<ddsi_XDPSenderResource>(new ddsi_XDPSenderResource(*this))
+        );
+    }
+    output_channels_open++;
+//    assert(output_channels_open == 1);
     return true;
 }
 
@@ -162,23 +173,6 @@ bool ddsi_XDPTransport::OpenInputChannel(const Locator &locator, TransportReceiv
     incomingDataThread = std::thread([this]() { processIncomingData(); });
     return true;
 }
-
-static uint64_t xsk_alloc_umem_frame(struct xsk_socket_info *xsk, bool is_tx) {
-    umem_free_frame_stack *freeFrameStack = is_tx ? &xsk->umem_frames_tx : &xsk->umem_frames_rx;
-    uint64_t frame;
-    if (freeFrameStack->umem_frame_free == 0) {
-        fprintf(stderr, "XDP UMEM: 1 %s frame allocation FAILED.\n", is_tx ? "TX" : "RX");
-        return INVALID_UMEM_FRAME;
-    }
-
-    freeFrameStack->umem_frame_free--;
-    frame = freeFrameStack->umem_frame_addr[freeFrameStack->umem_frame_free];
-    freeFrameStack->umem_frame_addr[freeFrameStack->umem_frame_free] = INVALID_UMEM_FRAME;
-//    fprintf(stderr, "XDP UMEM: 1 %s frame allocated: %lu.\n", is_tx?"TX":"RX", frame);
-    assert(frame >= 0 && frame < NUM_FRAMES * XDP_L2_FRAME_SIZE);
-    return frame;
-}
-
 
 void ddsi_XDPTransport::processIncomingData() {
 
@@ -202,7 +196,7 @@ void ddsi_XDPTransport::processIncomingData() {
         }
 
         if (packetsReceived == 0) {
-            std::this_thread::sleep_for(std::chrono::microseconds(500));
+//            std::this_thread::sleep_for(std::chrono::microseconds(500));
             continue;
         }
 
@@ -245,23 +239,27 @@ void ddsi_XDPTransport::processIncomingData() {
             dstloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
             DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
 
-            receiverInterface->OnDataReceived(
-                    packet->payload,
-                    bytes_received,
-                    localLoc,
-                    srcloc
-            );
-//            memcpy(buf, packet->payload, bytes_received);
-
-            printf("XDP: Read complete (port %i, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
+            printf("XDP: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %zu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
+                   packet->header.h_source[0], packet->header.h_source[1], packet->header.h_source[2],
+                   packet->header.h_source[3], packet->header.h_source[4], packet->header.h_source[5],
                    srcloc.port, bytes_received,
                    packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[bytes_received-3], packet->payload[bytes_received-2], packet->payload[bytes_received-1],
                    rte_hash_crc(packet->payload, bytes_received, 1337),
                    xsk_umem_free_frames(xsk, false)
             );
 
+            receiverInterface->OnDataReceived(
+                    packet->payload,
+                    bytes_received,
+                    dstloc,
+                    srcloc
+            );
+//            memcpy(buf, packet->payload, bytes_received);
+
+//            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
         } else {
-//            printf("XDP: Frame ethertype %i ignored.\n", packet->header.h_proto);
+            printf("XDP: Frame ethertype %i ignored.\n", packet->header.h_proto);
         }
 
         xsk_free_umem_frame(xsk, rxDescriptor->addr, false);
@@ -278,7 +276,6 @@ void ddsi_XDPTransport::processIncomingData() {
 void get_mac_address(const std::string &interface_name, userspace_l2_mac_addr &mac_addr) {
     int fd;
     struct ifreq ifr;
-    char mac_address[18];
 
     fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (fd == -1) {
@@ -318,7 +315,14 @@ bool ddsi_XDPTransport::OpenOutputChannels(SendResourceList &sender_resource_lis
 //    }
 
 //    printf("XDP: Connection opened on port %i\n", locator_selector_entry);
-    printf("XDP: Connection opened.\n");
+    assert(locator_selector_entry.unicast.size() + locator_selector_entry.multicast.size() == 1);
+    Locator selectedLocator;
+    if(locator_selector_entry.unicast.empty()) {
+        selectedLocator = locator_selector_entry.multicast[0];
+    } else {
+        selectedLocator = locator_selector_entry.unicast[0];
+    }
+    ddsi_XDPTransport::OpenOutputChannel(sender_resource_list, selectedLocator);
     return true;
 }
 
@@ -411,6 +415,9 @@ void ddsi_XDPTransport::shutdown() {
 
 
 bool ddsi_XDPTransport::init(const fastrtps::rtps::PropertyPolicy *properties, const uint32_t &max_msg_size_no_frag) {
+    (void)properties;
+    assert(max_msg_size_no_frag <= XDP_MAXIMUM_MESSAGE_SIZE && "XDP: Maximum message size must be 1000 bytes.");
+
     // XDP setup
     void *packet_buffer;
     uint64_t packet_buffer_size;
@@ -522,6 +529,7 @@ bool ddsi_XDPTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locato
 }
 
 bool ddsi_XDPTransport::CloseInputChannel(const Locator &locator) {
+    (void)locator;
     return false;
 }
 
@@ -530,7 +538,8 @@ TransportDescriptorInterface *ddsi_XDPTransport::get_configuration() {
 }
 
 uint32_t ddsi_XDPTransport::max_recv_buffer_size() const {
-    return 0;
+//    assert(0);
+    return 4096;
 }
 
 ddsi_XDPTransport::ddsi_XDPTransport(const ddsi_XDPTransportDescriptor &descriptor)

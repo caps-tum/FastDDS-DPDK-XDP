@@ -32,12 +32,17 @@ eprosima::fastdds::rtps::ddsi_l2_transport::RemoteToMainLocal(const Locator &rem
 //                };
 //                setLocatorBroadcastAddress(locator);
 //                return locator;
+    (void)remote;
     return localLoc;
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::DoInputLocatorsMatch(const Locator &locator,
                                                                       const Locator &locator1) const {
-    return locator.kind == locator1.kind && locator1.kind == transport_kind_;
+    bool is_match = locator.kind == locator1.kind
+            && locator1.kind == transport_kind_
+            && locator.port == locator1.port;
+    std::cout << "L2Transport: DoInputLocatorsMatch: " << locator << " " << locator1 << ": " << is_match << std::endl;
+    return is_match;
 }
 
 eprosima::fastdds::rtps::LocatorList
@@ -51,13 +56,23 @@ eprosima::fastdds::rtps::ddsi_l2_transport::NormalizeLocator(const Locator &loca
 
 void eprosima::fastdds::rtps::ddsi_l2_transport::select_locators(fastrtps::rtps::LocatorSelector &selector) const {
     // TODO
+
+    auto entries = selector.transport_starts();
     assert(selector.selected_size() == 0);
+    assert(entries.size() == 1);
     selector.select(0);
+    fastrtps::rtps::LocatorSelectorEntry &entry = *entries.at(0);
+    assert(entry.multicast.size() == 1);
+    assert(entry.unicast.empty());
+    std::cout << "L2Transport: Select locators: " << entry.remote_guid
+              << " multicast " << entry.multicast.at(0) << " unicast none " << std::endl;
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::is_local_locator(const Locator &locator) const {
     assert(locator.kind == transport_kind_);
-    return locator == localLoc;
+    bool is_local = locator == localLoc;
+    std::cout << "L2Transport: is local locator: " << locator << ": " << is_local << std::endl;
+    return is_local;
 //                return memcmp(
 //                        &locator.address[sizeof(locator.address) - sizeof(localMacAddress)],
 //                        localMacAddress,
@@ -66,47 +81,56 @@ bool eprosima::fastdds::rtps::ddsi_l2_transport::is_local_locator(const Locator 
 }
 
 void eprosima::fastdds::rtps::ddsi_l2_transport::AddDefaultOutputLocator(LocatorList &defaultList) {
-//                Locator locator;
-//                locator.kind = transport_kind_;
-//                locator.port = 0;
-//                setLocatorBroadcastAddress(locator);
-    defaultList.push_back(localLoc);
+    assert(defaultList.empty());
+    Locator locator;
+    locator.kind = transport_kind_;
+    locator.port = 0;
+    setLocatorBroadcastAddress(locator);
+    std::cout << "L2Transport: Add default output locator: " << locator << std::endl;
+    defaultList.push_back(locator);
 }
 
 void eprosima::fastdds::rtps::ddsi_l2_transport::setLocatorBroadcastAddress(Locator &locator) {
     // FF:FF:FF:FF:FF:FF
     memset(locator.address, 0, 10);
-    memset(&locator.address[10], 0xFF, 6);
+    memset(locator.address + 10, 0xFF, 6);
+    assert(locator.address[0] == 0x00);
+    assert(locator.address[9] == 0x00);
+    assert(locator.address[10] == 0xFF);
+    assert(locator.address[15] == 0xFF);
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::getDefaultMetatrafficMulticastLocators(LocatorList &locators,
                                                                                         uint32_t metatraffic_multicast_port) const {
-    Locator locator;
-    locator.kind = transport_kind_;
-    locator.port = static_cast<uint16_t>(metatraffic_multicast_port);
+    assert(locators.empty());
+    auto locator = Locator(transport_kind_, metatraffic_multicast_port);
     setLocatorBroadcastAddress(locator);
+    std::cout << "L2Transport: Get default metatraffic multicast locator: " << locator << std::endl;
     locators.push_back(locator);
+
     return true;
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::getDefaultMetatrafficUnicastLocators(LocatorList &locators,
                                                                                       uint32_t metatraffic_unicast_port) const {
-    Locator locator;
-    locator.kind = transport_kind_;
-    locator.port = static_cast<uint16_t>(metatraffic_unicast_port);
+    assert(locators.empty());
+    auto locator = Locator(transport_kind_, metatraffic_unicast_port);
     locator.set_Invalid_Address();
-    locators.push_back(locator);
+    memcpy(locator.address, localLoc.address, sizeof(locator.address));
+//    locators.push_back(locator);
+    std::cout << "L2Transport: Get default metatraffic unicast locator: <none set>"  << std::endl;
 
     return true;
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::getDefaultUnicastLocators(LocatorList &locators,
                                                                            uint32_t unicast_port) const {
-    Locator locator;
-    locator.kind = transport_kind_;
-    locator.port = static_cast<uint16_t>(unicast_port);
-    locator.set_Invalid_Address();
-    locators.push_back(locator);
+    assert(locators.empty());
+    auto locator = Locator(transport_kind_, unicast_port);
+//    locator.set_Invalid_Address();
+    memcpy(locator.address, localLoc.address, sizeof(locator.address));
+//    locators.push_back(locator);
+    std::cout << "L2Transport: Get default unicast locator: <none set>" << std::endl;
 
     return true;
 }
@@ -116,6 +140,8 @@ bool eprosima::fastdds::rtps::ddsi_l2_transport::fillMetatrafficMulticastLocator
     if (locator.port == 0) {
         locator.port = metatraffic_multicast_port;
     }
+    std::cout << "L2Transport: Fill metatraffic multicast locator: " << locator << std::endl;
+
     return true;
 }
 
@@ -125,6 +151,7 @@ eprosima::fastdds::rtps::ddsi_l2_transport::fillMetatrafficUnicastLocator(Locato
     if (locator.port == 0) {
         locator.port = metatraffic_unicast_port;
     }
+    std::cout << "L2Transport: Fill metatraffic unicast locator: " << locator << std::endl;
     return true;
 }
 
@@ -149,6 +176,8 @@ bool eprosima::fastdds::rtps::ddsi_l2_transport::fillUnicastLocator(Locator &loc
     if (locator.port == 0) {
         locator.port = well_known_port;
     }
+//    memcpy(locator.address, localLoc.address, sizeof(locator.address));
+    std::cout << "L2Transport: Fill unicast locator: " << locator << std::endl;
     return true;
 }
 

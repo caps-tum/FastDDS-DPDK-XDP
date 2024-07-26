@@ -30,6 +30,11 @@ public:
 
     bool is_locator_allowed(const Locator &locator) const override;
 
+    /**
+     * Converts a given remote locator (that is, a locator referring to a remote
+     * destination) to the main local locator whose channel can write to that
+     * destination. In this case it will return the local mac address on that port.
+     */
     Locator RemoteToMainLocal(const Locator &remote) const override;
 
     bool DoInputLocatorsMatch(const Locator &locator, const Locator &locator1) const override;

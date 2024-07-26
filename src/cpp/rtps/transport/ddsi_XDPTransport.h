@@ -104,6 +104,8 @@ public:
 
     struct xsk_socket_info *xskSocketInfo;
 
+    int output_channels_open = 0;
+
     xsk_socket_info *xsk_configure_socket(eprosima::fastdds::rtps::xsk_umem_info *umem);
 
     void processIncomingData();
@@ -118,6 +120,7 @@ public:
 
     bool OpenOutputChannels(SendResourceList &sender_resource_list,
                             const fastrtps::rtps::LocatorSelectorEntry &locator_selector_entry) override;
+
 };
 
 }

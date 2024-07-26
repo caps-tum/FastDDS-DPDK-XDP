@@ -372,6 +372,13 @@ inline std::ostream& operator <<(
     {
         output << IPLocator::toIPv6string(loc);
     }
+    else if (loc.kind == LOCATOR_KIND_XDP || loc.kind == LOCATOR_KIND_DPDK) {
+        std::ios_base::fmtflags f(output.flags());  // save flags state
+        for(unsigned char address_byte : loc.address) {
+            output << std::hex << std::uppercase << std::setfill('0') << std::setw(2) << static_cast<int>(address_byte) << ":";
+        }
+        output.flags(f);  // restore flags state
+    }
     else if (loc.kind == LOCATOR_KIND_SHM)
     {
         if (loc.address[0] == 'M')

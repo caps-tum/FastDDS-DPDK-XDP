@@ -18,7 +18,10 @@ namespace eprosima {
             public:
                 explicit ddsi_XDPSenderResource(ddsi_XDPTransport& transport);
 
+                void add_locators_to_list(fastrtps::rtps::LocatorList_t &locators) const override;
 
+            private:
+                ddsi_XDPTransport* transport_;
 
             };
 

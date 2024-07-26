@@ -48,11 +48,11 @@ bool HelloWorldPublisher::init()
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
-//    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
-//    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
-//    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
-//    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationWriterANDSubscriptionReader = true;
-//    pqos.wire_protocol().builtin.discovery_config.leaseDuration = eprosima::fastrtps::c_TimeInfinite;
+    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
+    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
+    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
+    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationWriterANDSubscriptionReader = true;
+    pqos.wire_protocol().builtin.discovery_config.leaseDuration = eprosima::fastrtps::c_TimeInfinite;
     pqos.name("Participant_pub");
 
     // Explicit configuration of SharedMem transport
@@ -62,7 +62,7 @@ bool HelloWorldPublisher::init()
     pqos.transport().user_transports.push_back(shm_transport);
 
 //    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, PARTICIPANT_QOS_DEFAULT);
 
     if (participant_ == nullptr)
     {
@@ -211,6 +211,7 @@ bool HelloWorldPublisher::publish(
         std::string s = "BigData" + std::to_string(hello_->index() % 10);
         strcpy(&hello_->data()[data_size - s.length() - 1], s.c_str());
 
+        std::cout << "===== MESSAGE SENT =====" << std::endl;
         writer_->write(hello_.get());
 
         return true;

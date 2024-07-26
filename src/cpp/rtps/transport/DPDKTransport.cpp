@@ -170,6 +170,14 @@ bool DPDKTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locator &l
 }
 
 bool DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
+    assert(locator.kind == transport_kind_);
+    printf(
+            "XDP: Connection opened on locator %02x:%02x:%02x:%02x:%02x:%02x port %i\n",
+            locator.address[10], locator.address[11], locator.address[12], locator.address[13], locator.address[14], locator.address[15],
+            locator.port
+    );
+    output_channels_open++;
+    assert(output_channels_open == 1);
     sender_resource_list.push_back(
             std::unique_ptr<DPDKSenderResource>(new DPDKSenderResource(*this))
     );
