@@ -562,8 +562,9 @@ add_custom_command(
         COMMAND clang -S -target bpf -D __BPF_TRACING__ -Wall -Wextra -O2 -emit-llvm -c -g -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
         COMMAND llc -march=bpf -filetype=obj -o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.o ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.ll
         MAIN_DEPENDENCY ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
+        DEPENDS ${CMAKE_CURRENT_LIST_DIR}/rtps/transport/ddsi_xdp_l2_kern.c
 )
-add_custom_target(ddsi_xdp_l2_kern SOURCES ddsi_xdp_l2_kern.o)
+add_custom_target(ddsi_xdp_l2_kern DEPENDS ${CMAKE_BINARY_DIR}/ddsi_xdp_l2_kern.o)
 add_dependencies(${PROJECT_NAME} ddsi_xdp_l2_kern)
 
 
