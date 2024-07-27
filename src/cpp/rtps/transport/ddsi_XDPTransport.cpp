@@ -84,7 +84,7 @@ void ddsi_XDPTransport::xsk_free_umem_frame(struct xsk_socket_info *xsk, uint64_
 struct xsk_socket_info *ddsi_XDPTransport::xsk_configure_socket(struct xsk_umem_info *umem) {
     struct xsk_socket_config xsk_cfg;
     struct xsk_socket_info *xsk_info;
-    int ret;
+    unsigned int ret;
 
     xsk_info = static_cast<xsk_socket_info *>(calloc(1, sizeof(*xsk_info)));
     if (!xsk_info)
@@ -167,10 +167,12 @@ bool ddsi_XDPTransport::OpenOutputChannel(SendResourceList &sender_resource_list
 bool ddsi_XDPTransport::OpenInputChannel(const Locator &locator, TransportReceiverInterface *anInterface,
                                          uint32_t maxMessageSize) {
     if (receiverInterface != nullptr) {
-        rte_exit(RTE_LOG_ERR, "Already registered a receiver interface.");
+        std::cout << "Already registered a receiver interface." << std::endl;
+        abort();
     }
     receiverInterface = anInterface;
     incomingDataThread = std::thread([this]() { processIncomingData(); });
+    std::cout << "XDP: Opened input channel " << locator << " max message size " << maxMessageSize << std::endl;
     return true;
 }
 
@@ -179,7 +181,7 @@ void ddsi_XDPTransport::processIncomingData() {
     struct xsk_socket_info *xsk = xskSocketInfo;
     unsigned int packetsReceived, i;
     uint32_t idx_rx = 0, idx_fq = 0;
-    int ret;
+    unsigned int ret;
 
     printf("XDP: Read thread started.\n");
 
@@ -237,7 +239,9 @@ void ddsi_XDPTransport::processIncomingData() {
             Locator dstloc{};
             dstloc.kind = XDP_TRANSPORT_KIND;
             dstloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
-            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
+            // We now trust the destination address
+            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &packet->header.h_dest);
+//            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
 
             printf("XDP: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %zu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
                    packet->header.h_source[0], packet->header.h_source[1], packet->header.h_source[2],

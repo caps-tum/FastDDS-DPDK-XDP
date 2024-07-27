@@ -46,7 +46,10 @@ if(WIN32)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
-add_executable(DDSHelloWorldExampleXDP ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CXX} ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CPP})
+add_executable(DDSHelloWorldExampleXDP ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CXX} ${DDS_SHM_HELLOWORLD_EXAMPLE_SOURCES_CPP}
+        Listeners.cpp
+        Listeners.cpp
+        Listeners.h)
 target_compile_definitions(DDSHelloWorldExampleXDP PRIVATE
     $<$<AND:$<NOT:$<BOOL:${WIN32}>>,$<STREQUAL:"${CMAKE_BUILD_TYPE}","Debug">>:__DEBUG>
     $<$<BOOL:${INTERNAL_DEBUG}>:__INTERNALDEBUG> # Internal debug activated.

@@ -18,6 +18,7 @@
  */
 
 #include "HelloWorldPublisher.h"
+#include "Listeners.h"
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/rtps/transport/shared_mem/SharedMemTransportDescriptor.h>
@@ -48,6 +49,7 @@ bool HelloWorldPublisher::init()
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
+//    DomainParticipantQos pqos;
 //    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
 //    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
 //    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
@@ -62,7 +64,7 @@ bool HelloWorldPublisher::init()
     pqos.transport().user_transports.push_back(shm_transport);
 
 //    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
 
     if (participant_ == nullptr)
     {
@@ -89,17 +91,18 @@ bool HelloWorldPublisher::init()
     }
 
     //CREATE THE DATAWRITER
-    DataWriterQos wqos;
-    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
-    wqos.history().depth = 30;
-    wqos.resource_limits().max_samples = 50;
-    wqos.resource_limits().allocated_samples = 20;
-    wqos.reliable_writer_qos().times.heartbeatPeriod.seconds = 2;
-    wqos.reliable_writer_qos().times.heartbeatPeriod.nanosec = 200 * 1000 * 1000;
-    wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.publish_mode().kind = ASYNCHRONOUS_PUBLISH_MODE;
+//    DataWriterQos wqos;
+//    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
+//    wqos.history().depth = 30;
+//    wqos.resource_limits().max_samples = 50;
+//    wqos.resource_limits().allocated_samples = 20;
+//    wqos.reliable_writer_qos().times.heartbeatPeriod.seconds = 2;
+//    wqos.reliable_writer_qos().times.heartbeatPeriod.nanosec = 200 * 1000 * 1000;
+//    wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
+//    wqos.publish_mode().kind = ASYNCHRONOUS_PUBLISH_MODE;
 
-    writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
+//    writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
+    writer_ = publisher_->create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, &listener_);
 
     if (writer_ == nullptr)
     {
@@ -146,6 +149,25 @@ void HelloWorldPublisher::PubListener::on_publication_matched(
         std::cout << info.current_count_change
                   << " is not a valid value for PublicationMatchedStatus current count change" << std::endl;
     }
+}
+
+void HelloWorldPublisher::PubListener::on_offered_deadline_missed(DataWriter *writer,
+                                                                  const OfferedDeadlineMissedStatus &status) {
+    std::cout << "DataWriterListener::on_offered_deadline_missed" << std::endl;
+}
+
+void HelloWorldPublisher::PubListener::on_offered_incompatible_qos(DataWriter *writer,
+                                                                   const OfferedIncompatibleQosStatus &status) {
+    std::cout << "DataWriterListener::on_offered_incompatible_qos" << std::endl;
+}
+
+void HelloWorldPublisher::PubListener::on_liveliness_lost(DataWriter *writer, const LivelinessLostStatus &status) {
+    std::cout << "DataWriterListener::on_liveliness_lost" << std::endl;
+}
+
+void HelloWorldPublisher::PubListener::on_unacknowledged_sample_removed(DataWriter *writer,
+                                                                        const InstanceHandle_t &instance) {
+    std::cout << "DataWriterListener::on_unacknowledged_sample_removed" << std::endl;
 }
 
 void HelloWorldPublisher::runThread(

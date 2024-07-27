@@ -976,6 +976,7 @@ bool StatefulReader::acceptMsgFrom(
 {
     assert(wp != nullptr);
 
+    // TODO:VB 1 matched writer in non-XDP
     for (WriterProxy* it : matched_writers_)
     {
         if (it->guid() == writerId && it->is_alive())

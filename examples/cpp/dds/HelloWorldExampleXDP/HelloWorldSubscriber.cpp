@@ -19,6 +19,7 @@
 
 #include "HelloWorldSubscriber.h"
 #include "fastdds/dds/log/StdoutConsumer.hpp"
+#include "Listeners.h"
 
 #include <chrono>
 #include <thread>
@@ -45,10 +46,11 @@ bool HelloWorldSubscriber::init()
 //    Log::Reset();
 //    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
 //    Log::RegisterConsumer(std::move(stdout_consumer));
-//    Log::SetVerbosity(Log::Kind::Info);
+    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
+//    DomainParticipantQos pqos;
 //    pqos.wire_protocol().builtin.discovery_config.discoveryProtocol = DiscoveryProtocol_t::SIMPLE;
 //    pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = true;
 //    pqos.wire_protocol().builtin.discovery_config.m_simpleEDP.use_PublicationReaderANDSubscriptionWriter = true;
@@ -62,7 +64,7 @@ bool HelloWorldSubscriber::init()
     auto sm_transport = std::make_shared<ddsi_XDPTransportDescriptor>();
     pqos.transport().user_transports.push_back(sm_transport);
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
 
     if (participant_ == nullptr)
     {
@@ -81,7 +83,7 @@ bool HelloWorldSubscriber::init()
     }
 
     //CREATE THE TOPIC
-    topic_ = participant_->create_topic("HelloWorldSharedMemTopic", "HelloWorld", TOPIC_QOS_DEFAULT);
+    topic_ = participant_->create_topic("HelloWorldSharedMemTopic", "HelloWorld", TOPIC_QOS_DEFAULT, &exampleTopicListener);
 
     if (topic_ == nullptr)
     {
@@ -89,15 +91,16 @@ bool HelloWorldSubscriber::init()
     }
 
     //CREATE THE DATAREADER
-    DataReaderQos rqos;
-    rqos.history().kind = KEEP_LAST_HISTORY_QOS;
-    rqos.history().depth = 30;
-    rqos.resource_limits().max_samples = 50;
-    rqos.resource_limits().allocated_samples = 20;
-    rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+//    DataReaderQos rqos;
+//    rqos.history().kind = KEEP_LAST_HISTORY_QOS;
+//    rqos.history().depth = 30;
+//    rqos.resource_limits().max_samples = 50;
+//    rqos.resource_limits().allocated_samples = 20;
+//    rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
+//    rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
 
-    reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);
+//    reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);
+    reader_ = subscriber_->create_datareader(topic_, DATAREADER_QOS_DEFAULT, &listener_);
 
     if (reader_ == nullptr)
     {
@@ -164,6 +167,29 @@ void HelloWorldSubscriber::SubListener::on_data_available(
                       << (char*)&hello_->data()[data_size - 9] << std::endl;
         }
     }
+}
+
+void HelloWorldSubscriber::SubListener::on_requested_deadline_missed(DataReader *reader,
+                                                                     const RequestedDeadlineMissedStatus &status) {
+    std::cout << "DataReaderListener::on_requested_deadline_missed" << std::endl;
+}
+
+void
+HelloWorldSubscriber::SubListener::on_liveliness_changed(DataReader *reader, const LivelinessChangedStatus &status) {
+    std::cout << "DataReaderListener::on_liveliness_changed" << std::endl;
+}
+
+void HelloWorldSubscriber::SubListener::on_sample_rejected(DataReader *reader, const SampleRejectedStatus &status) {
+    std::cout << "DataReaderListener::on_sample_rejected" << std::endl;
+}
+
+void HelloWorldSubscriber::SubListener::on_requested_incompatible_qos(DataReader *reader,
+                                                                      const RequestedIncompatibleQosStatus &status) {
+    std::cout << "DataReaderListener::on_requested_incompatible_qos" << std::endl;
+}
+
+void HelloWorldSubscriber::SubListener::on_sample_lost(DataReader *reader, const SampleLostStatus &status) {
+    std::cout << "DataReaderListener::on_sample_lost" << std::endl;
 }
 
 void HelloWorldSubscriber::run()

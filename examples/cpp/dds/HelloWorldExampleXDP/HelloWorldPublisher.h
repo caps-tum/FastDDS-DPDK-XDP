@@ -86,6 +86,18 @@ private:
 
         bool first_connected_;
 
+        void on_offered_deadline_missed(eprosima::fastdds::dds::DataWriter *writer,
+                                        const eprosima::fastdds::dds::OfferedDeadlineMissedStatus &status) override;
+
+        void on_offered_incompatible_qos(eprosima::fastdds::dds::DataWriter *writer,
+                                         const eprosima::fastdds::dds::OfferedIncompatibleQosStatus &status) override;
+
+        void on_liveliness_lost(eprosima::fastdds::dds::DataWriter *writer,
+                                const eprosima::fastdds::dds::LivelinessLostStatus &status) override;
+
+        void on_unacknowledged_sample_removed(eprosima::fastdds::dds::DataWriter *writer,
+                                              const eprosima::fastdds::dds::InstanceHandle_t &instance) override;
+
     }
     listener_;
 

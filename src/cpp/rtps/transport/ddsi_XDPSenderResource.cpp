@@ -65,10 +65,11 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
         frame_buffer->header.h_proto = ddsi_userspace_l2_get_ethertype_for_port((uint16_t) dst.port);
         assert(ddsi_userspace_l2_is_valid_ethertype(frame_buffer->header.h_proto));
 
-//        static_assert(sizeof(dst.address) == 16 && sizeof(frame_buffer->header.h_dest) == 6, "Copy buffer sizes incorrect.");
-//        memcpy(frame_buffer->header.h_dest, &dst.address[10], sizeof(frame_buffer->header.h_dest));
-        // We ignore supposed destination and send to broadcast address
-        memset(frame_buffer->header.h_dest, 0xFF, sizeof(frame_buffer->header.h_dest));
+        // We send to the actual target address
+        static_assert(sizeof(dst.address) == 16 && sizeof(frame_buffer->header.h_dest) == 6, "Copy buffer sizes incorrect.");
+        memcpy(frame_buffer->header.h_dest, &dst.address[10], sizeof(frame_buffer->header.h_dest));
+//        // We ignore supposed destination and send to broadcast address
+//        memset(frame_buffer->header.h_dest, 0xFF, sizeof(frame_buffer->header.h_dest));
 
         static_assert(sizeof(frame_buffer->header.h_source) == sizeof(transport.localMacAddress), "Unexpected MAC address buffer sizes.");
         memcpy(frame_buffer->header.h_source, &transport.localMacAddress, sizeof(frame_buffer->header.h_source));
