@@ -261,6 +261,8 @@ int32_t WriterProxy::lost_changes_update(
         changes_received_.erase(changes_received_.begin(), it);
 
         // Update low mark
+        std::cout << "Cache: Setting changes_from_writer_low_mark_ from " << changes_from_writer_low_mark_
+                  << " to " << seq_num - 1 << " (lost changes update)," << std::endl;
         changes_from_writer_low_mark_ = seq_num - 1;
         if (changes_from_writer_low_mark_ > max_sequence_number_)
         {
@@ -278,6 +280,8 @@ bool WriterProxy::received_change_set(
         const SequenceNumber_t& seq_num)
 {
     EPROSIMA_LOG_INFO(RTPS_READER, guid().entityId << ": seq_num: " << seq_num);
+    std::cout << "WriterProxy: Received change set " << seq_num;
+
     return received_change_set(seq_num, true);
 }
 
@@ -309,6 +313,9 @@ bool WriterProxy::received_change_set(
         // If it is the next to be acknowledeg, not insert
         if (seq_num == changes_from_writer_low_mark_ + 1)
         {
+            std::cout << "Cache: Setting changes_from_writer_low_mark_ from " << changes_from_writer_low_mark_
+                      << " to " << seq_num
+                      << " (received change set case 1)" << std::endl;
             changes_from_writer_low_mark_ = seq_num;
         }
         else
@@ -322,6 +329,9 @@ bool WriterProxy::received_change_set(
         // Check if it is next to the last acknowledged
         if (changes_from_writer_low_mark_ + 1 == seq_num)
         {
+            std::cout << "Cache: Setting changes_from_writer_low_mark_ from " << changes_from_writer_low_mark_
+                      << " to " << seq_num
+                      << " (received change set case 2)" << std::endl;
             changes_from_writer_low_mark_ = seq_num;
             cleanup();
         }
@@ -402,6 +412,7 @@ void WriterProxy::cleanup()
     while (chit != changes_received_.end() && *chit == changes_from_writer_low_mark_ + 1)
     {
         chit++;
+        std::cout << "Cache: Incrementing changes_from_writer_low_mark_ from " << changes_from_writer_low_mark_ << std::endl;
         changes_from_writer_low_mark_++;
     }
 

@@ -1,0 +1,902 @@
+/tmp/tmp.nhwUYAqdpB/cmake-build-debug-remote-host-sie-1/examples/cpp/dds/HelloWorldExample/DDSHelloWorldExample publisher 1 5000
+Starting
+2024-07-27 16:14:47.623 [RTPS_PARTICIPANT Info]  -> Function createParticipant
+2024-07-27 16:14:47.626 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function ChannelResource
+2024-07-27 16:14:47.626 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function MessageReceiver
+2024-07-27 16:14:47.627 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function ChannelResource
+2024-07-27 16:14:47.627 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function MessageReceiver
+2024-07-27 16:14:47.627 [RTPS_PARTICIPANT Info] Participant_pub Created with NO default Unicast Locator List, adding Locators:[SHM:[_]:7411,UDPv4:[192.168.0.100]:7411,UDPv4:[192.168.2.110]:7411] -> Function setup_user_traffic
+2024-07-27 16:14:47.627 [RTPS_TRANSPORT_SHM Info] (ID:140118821132608) Opening fastrtps_port7411 -> Function open_port_internal
+2024-07-27 16:14:47.627 [RTPS_TRANSPORT_SHM Warning] (ID:140118821132608) Port 7411 Zombie. Reset the port -> Function open_port_internal
+2024-07-27 16:14:47.628 [RTPS_TRANSPORT_SHM Info] (ID:140118821132608) Port 7411 (e6e366983a87a271ReadExclusive) Created. -> Function init_port
+2024-07-27 16:14:47.628 [RTPS_MSG_IN Info] Created with CDRMessage of size: 10500 -> Function ChannelResource
+2024-07-27 16:14:47.628 [RTPS_MSG_IN Info] Created with CDRMessage of size: 4294967295 -> Function MessageReceiver
+2024-07-27 16:14:47.629 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function ChannelResource
+2024-07-27 16:14:47.629 [RTPS_MSG_IN Info] Created with CDRMessage of size: 65500 -> Function MessageReceiver
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:14:47.630 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:14:47.630 [RTPS_PDP Info] Beginning -> Function initPDP
+2024-07-27 16:14:47.630 [RTPS_PDP Info] Beginning -> Function createPDPEndpoints
+2024-07-27 16:14:47.631 [RTPS_PARTICIPANT Info] Creating reader of type BEST_EFFORT -> Function create_reader
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Creating CacheChangePool of size: 26 -> Function init
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Allocating group of cache changes of size: 26 -> Function allocateGroup
+2024-07-27 16:14:47.631 [RTPS_READER Info] RTPSReader created correctly -> Function init
+2024-07-27 16:14:47.631 [RTPS_PARTICIPANT Info] Creating writer of type BEST_EFFORT -> Function create_writer
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.631 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 16:14:47.631 [RTPS_WRITER Info] RTPSWriter created -> Function init
+2024-07-27 16:14:47.631 [RTPS_PDP Info] SPDP Endpoints creation finished -> Function createPDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_EDP Info] Beginning Simple Endpoint Discovery Protocol -> Function initEDP
+2024-07-27 16:14:47.632 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Creating CacheChangePool of size: 21 -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Allocating group of cache changes of size: 21 -> Function allocateGroup
+2024-07-27 16:14:47.632 [RTPS_WRITER Info] RTPSWriter created -> Function init
+2024-07-27 16:14:47.632 [RTPS_EDP Info] SEDP Publication Writer created -> Function createSEDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 16:14:47.632 [RTPS_READER Info] RTPSReader created correctly -> Function init
+2024-07-27 16:14:47.632 [RTPS_EDP Info] SEDP Subscription Reader created -> Function createSEDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 16:14:47.632 [RTPS_READER Info] RTPSReader created correctly -> Function init
+2024-07-27 16:14:47.632 [RTPS_EDP Info] SEDP Publication Reader created -> Function createSEDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Creating CacheChangePool of size: 21 -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.632 [RTPS_UTILS Info] Allocating group of cache changes of size: 21 -> Function allocateGroup
+2024-07-27 16:14:47.632 [RTPS_WRITER Info] RTPSWriter created -> Function init
+2024-07-27 16:14:47.632 [RTPS_EDP Info] SEDP Subscription Writer created -> Function createSEDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_EDP Info] Creation finished -> Function createSEDPEndpoints
+2024-07-27 16:14:47.632 [RTPS_LIVELINESS Info] Initializing Liveliness Protocol -> Function initWL
+2024-07-27 16:14:47.633 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Creating CacheChangePool of size: 3 -> Function init
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Allocating group of cache changes of size: 3 -> Function allocateGroup
+2024-07-27 16:14:47.633 [RTPS_WRITER Info] RTPSWriter created -> Function init
+2024-07-27 16:14:47.633 [RTPS_LIVELINESS Info] Builtin Liveliness Writer created -> Function createEndpoints
+2024-07-27 16:14:47.633 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Creating CacheChangePool of size: 0 -> Function init
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.633 [RTPS_UTILS Info] Allocating group of cache changes of size: 1 -> Function allocateGroup
+2024-07-27 16:14:47.633 [RTPS_READER Info] RTPSReader created correctly -> Function init
+2024-07-27 16:14:47.633 [RTPS_LIVELINESS Info] Builtin Liveliness Reader created -> Function createEndpoints
+2024-07-27 16:14:47.633 [RTPS_PARTICIPANT Info] RTPSParticipant "Participant_pub" with guidPrefix: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function RTPSParticipantImpl
+2024-07-27 16:14:47.633 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 16:14:47.633 [RTPS_WRITER_HISTORY Info] Change 1 added with 436 bytes -> Function prepare_and_add_change
+2024-07-27 16:14:47.633 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:47.633 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:47.636 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:47.637 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:47.637 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:47.637 [RTPS_PARTICIPANT Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 16:14:47.638 [PARTICIPANT Info] Type HelloWorld registered. -> Function register_type
+2024-07-27 16:14:47.639 [PUBLISHER Info] CREATING WRITER IN TOPIC: HelloWorldTopic -> Function create_datawriter
+2024-07-27 16:14:47.639 [DATA_WRITER Info] Data sharing disabled because data type is not bounded -> Function check_datasharing_compatible
+2024-07-27 16:14:47.639 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 16:14:47.639 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 16:14:47.639 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 16:14:47.639 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+2024-07-27 16:14:47.639 [RTPS_WRITER Info] RTPSWriter created -> Function init
+2024-07-27 16:14:47.639 [RTPS_EDP Info] Adding 0.0.1.3 in topic HelloWorldTopic -> Function newLocalWriterProxyData
+2024-07-27 16:14:47.639 [RTPS_PDP Info] Adding writer proxy data 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 -> Function addWriterProxyData
+2024-07-27 16:14:47.645 [RTPS_EDP Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 in topic: "HelloWorldTopic" -> Function pairing_writer_proxy_with_any_local_reader
+2024-07-27 16:14:47.645 [RTPS_EDP Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 in topic: "HelloWorldTopic" -> Function pairingWriter
+2024-07-27 16:14:47.645 [RTPS_EDP Info] 0.0.1.3 -> Function processLocalWriterProxyData
+2024-07-27 16:14:47.646 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 16:14:47.646 [RTPS_WRITER_HISTORY Info] Change 1 added with 408 bytes -> Function prepare_and_add_change
+2024-07-27 16:14:47.646 [RTPS_WRITER Info] No reader proxy to add change. -> Function unsent_change_added_to_history
+2024-07-27 16:14:47.646 [RTPS_LIVELINESS Info] 0.0.1.3 to Liveliness Protocol -> Function add_local_writer
+Publisher running 1 samples.
+2024-07-27 16:14:47.745 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:47.745 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:47.745 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.746 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.746 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.746 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.746 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.746 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.746 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.746 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.746 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.746 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.845 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:47.845 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:47.845 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.846 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.846 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.846 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.846 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.846 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.846 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.846 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.846 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.846 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.945 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:47.945 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:47.946 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:47.946 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.946 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.946 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.946 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.946 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:47.946 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:47.946 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:47.946 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:47.946 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.045 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:48.045 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:48.046 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:48.046 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.046 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.046 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.046 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.046 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.046 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.046 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.046 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.046 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:48.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:48.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:48.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:48.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:48.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:48.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:51.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:51.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:51.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:51.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:51.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:51.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:51.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:51.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:51.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:51.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:54.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:54.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:54.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:54.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:54.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:54.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:54.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:54.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:54.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:54.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:54.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:14:57.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:14:57.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:14:57.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:57.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:57.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:57.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:57.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:57.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:14:57.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:14:57.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:14:57.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:00.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:00.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:00.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:00.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:00.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:00.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:00.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:00.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:00.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:00.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:00.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.010 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.010 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.010 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.010 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.010 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:01.010 [RTPS_PDP Info] SPDP Message received from: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.010 [RTPS_PDP_DISCOVERY Info] New participant 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 at MTTLoc: {UNICAST:[UDPv4:[192.168.0.101]:7410,UDPv4:[192.168.2.109]:7410]} DefLoc:{UNICAST:[UDPv4:[192.168.0.101]:7411,UDPv4:[192.168.2.109]:7411]} -> Function notify_and_maybe_ignore_new_participant
+2024-07-27 16:15:01.010 [RTPS_READER Info] Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2 added to reader 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function matched_writer_add
+2024-07-27 16:15:01.010 [RTPS_WRITER Info] Adding reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c7 to 0.1.0.c2 as remote reader -> Function matched_reader_add
+2024-07-27 16:15:01.010 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:01.010 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:01.010 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:15:01.011 [RTPS_EDP Info] New DPD received, adding remote endpoints to our SimpleEDP endpoints -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.011 [RTPS_EDP Info] Adding SEDP Pub Writer to my Pub Reader -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.011 [RTPS_READER Info] Writer Proxy created in reader: 0.0.3.c7 -> Function WriterProxy
+2024-07-27 16:15:01.011 [RTPS_READER Info] Writer Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.3.c2 added to 0.0.3.c7 -> Function matched_writer_add
+2024-07-27 16:15:01.011 [RTPS_EDP Info] Adding SEDP Pub Reader to my Pub Writer -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.011 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 16:15:01.011 [RTPS_WRITER Info] Adding reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.3.c7 to 0.0.3.c2 as remote reader -> Function matched_reader_add
+2024-07-27 16:15:01.011 [RTPS_WRITER Info] 0.0.3.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.011 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.011 [RTPS_WRITER Info] Reader Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.3.c7 added to 0.0.3.c2 with 2(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 16:15:01.011 [RTPS_EDP Info] Adding SEDP Sub Writer to my Sub Reader -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.011 [RTPS_READER Info] Writer Proxy created in reader: 0.0.4.c7 -> Function WriterProxy
+2024-07-27 16:15:01.011 [RTPS_READER Info] Writer Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c2 added to 0.0.4.c7 -> Function matched_writer_add
+2024-07-27 16:15:01.011 [RTPS_EDP Info] Adding SEDP Sub Reader to my Sub Writer -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.011 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 16:15:01.011 [RTPS_WRITER Info] Adding reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c7 to 0.0.4.c2 as remote reader -> Function matched_reader_add
+2024-07-27 16:15:01.012 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 0) -> Function send_heartbeat_nts_
+2024-07-27 16:15:01.012 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.012 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.012 [RTPS_WRITER Info] Reader Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c7 added to 0.0.4.c2 with 2(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 16:15:01.012 [RTPS_LIVELINESS Info] Adding remote writer to my local Builtin Reader -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.012 [RTPS_READER Info] Writer Proxy created in reader: 0.2.0.c7 -> Function WriterProxy
+2024-07-27 16:15:01.012 [RTPS_READER Info] Writer Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c2 added to 0.2.0.c7 -> Function matched_writer_add
+2024-07-27 16:15:01.012 [RTPS_LIVELINESS Info] Adding remote reader to my local Builtin Writer -> Function assignRemoteEndpoints
+2024-07-27 16:15:01.012 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 16:15:01.012 [RTPS_WRITER Info] Adding reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c7 to 0.2.0.c2 as remote reader -> Function matched_reader_add
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.012 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:01.012 [RTPS_PDP Info] SPDP Message received from: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.012 [RTPS_WRITER_HISTORY Info] Failed to remove a change from history -> Function remove_change
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_WRITER Info] 0.2.0.c2 Sending Heartbeat (1 - 0) -> Function send_heartbeat_nts_
+2024-07-27 16:15:01.012 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.012 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.012 [RTPS_WRITER Info] Reader Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c7 added to 0.2.0.c2 with 2(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 16:15:01.012 [RTPS_PARTICIPANT Info] 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 16:15:01.012 [RTPS_WRITER_HISTORY Info] Trying to remove a change not in history -> Function remove_change
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.012 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:01.012 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.012 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.012 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_READER Info] 0.0.3.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 16:15:01.013 [RTPS_READER Info] 0.0.3.c2: changes up to seq_num: 0 missing. -> Function missing_changes_update
+NotifyChanges: Next sequence is 18446744069414584320
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.013 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:01.013 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.013 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.013 [RTPS_READER Info] Sending ACKNACK: 1: -> Function send_acknack
+2024-07-27 16:15:01.013 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:01.013 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.013 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.013 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.013 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_READER Info] 0.0.4.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 16:15:01.013 [RTPS_READER Info] 0.0.4.c2: changes up to seq_num: 0 missing. -> Function missing_changes_update
+NotifyChanges: Next sequence is 18446744069414584320
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+NotifyChanges: Next sequence is 18446744069414584320
+2024-07-27 16:15:01.013 [RTPS_READER Info] Sending ACKNACK: 1: -> Function send_acknack
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.013 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.013 [RTPS_READER Info] 0.2.0.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 16:15:01.013 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.014 [RTPS_READER Info] 0.2.0.c2: changes up to seq_num: 0 missing. -> Function missing_changes_update
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_READER_PROXY Info] Requested Changes: 1:1- -> Function requested_changes_set
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.014 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.015 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.015 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:01.015 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:01.015 [TRANSPORT_UDP Info] UDPTransport: 540 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.015 [TRANSPORT_UDP Info] UDPTransport: 540 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.019 [RTPS_READER Info] Sending ACKNACK: 1: -> Function send_acknack
+2024-07-27 16:15:01.019 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.019 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+WriterProxy: Received change set 1Cache: Setting changes_from_writer_low_mark_ from 0 to 1 (received change set case 1)
+NotifyChanges: Next sequence is 1
+2024-07-27 16:15:01.020 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 0.0.4.c7 -> Function processDataMsg
+2024-07-27 16:15:01.020 [RTPS_READER_HISTORY Info] Change 1 added with 408 bytes -> Function add_change
+2024-07-27 16:15:01.020 [RTPS_READER Info] 0.0.4.c2: seq_num: 1 -> Function received_change_set
+2024-07-27 16:15:01.020 [RTPS_EDP Info]  -> Function onNewCacheChangeAdded
+2024-07-27 16:15:01.020 [RTPS_PDP Info] Adding reader proxy data 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 -> Function addReaderProxyData
+2024-07-27 16:15:01.020 [RTPS_EDP Info] 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 in topic: "HelloWorldTopic" -> Function pairing_reader_proxy_with_any_local_writer
+2024-07-27 16:15:01.021 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 16:15:01.021 [RTPS_WRITER Info] Adding reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 to 0.0.1.3 as remote reader -> Function matched_reader_add
+2024-07-27 16:15:01.021 [RTPS_WRITER Info] 0.0.1.3 Sending Heartbeat (1 - 0) -> Function send_heartbeat_nts_
+2024-07-27 16:15:01.021 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.0.101:7411 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.021 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.2.109:7411 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:01.021 [RTPS_WRITER Info] Reader Proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 added to 0.0.1.3 with 2(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 16:15:01.021 [RTPS_EDP_MATCH Info] RP:01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 match W:01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3. RLoc:{UNICAST:[UDPv4:[192.168.0.101]:7411,UDPv4:[192.168.2.109]:7411]} -> Function operator()
+Publisher matched.
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.021 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.025 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:01.026 [RTPS_MSG_IN Info] (ID:140118702663424) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.110 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.210 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.310 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.410 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.411 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.411 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.411 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.411 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.411 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:01.510 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:02.011 [RTPS_WRITER Info] 0.0.3.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 16:15:02.011 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.011 [TRANSPORT_UDP Info] UDPTransport: 128 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.012 [RTPS_MSG_IN Info] (ID:140118727841536) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.020 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.020 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.020 [RTPS_MSG_IN NotifyChanges: Next sequence is Info18446744069414584320
+] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.020 [RTPS_READER Info] 0.0.4.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 16:15:02.020 [RTPS_READER Info] 0.0.4.c2: changes up to seq_num: 1 missing. -> Function missing_changes_update
+2024-07-27 16:15:02.020 [RTPS_MSG_IN Info] (ID:140118727841536) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.020 [RTPS_MSG_IN Info] (ID:140118727841536) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.020 [RTPS_MSG_IN Info] (ID:140118727841536) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.020 [RTPS_READER Info] Sending ACKNACK: 2: -> Function send_acknack
+2024-07-27 16:15:02.020 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.020 [TRANSPORT_UDP Info] UDPTransport: 124 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.647 [DATA_WRITER Info] Writing new data -> Function write
+2024-07-27 16:15:02.647 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 16:15:02.647 [RTPS_WRITER_HISTORY Info] Change 1 added with 23 bytes -> Function prepare_and_add_change
+2024-07-27 16:15:02.647 [RTPS_READER_PROXY Info] Change 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 is relevant for reader 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4? 1 -> Function rtps_is_relevant
+2024-07-27 16:15:02.647 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:02.647 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:02.647 [RTPS_WRITER Info] 0.0.1.3 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+Message: HelloWorld with index: 1 SENT
+2024-07-27 16:15:02.647 [TRANSPORT_UDP Info] UDPTransport: 188 bytes TO endpoint: 192.168.0.101:7411 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.647 [TRANSPORT_UDP Info] UDPTransport: 188 bytes TO endpoint: 192.168.2.109:7411 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:02.647 [RTPS_HISTORY Info] HelloWorld Change 1 added with key: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 and 23 bytes -> Function add_pub_change_with_commit_hook
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) DST RTPSParticipant is now: 01.0f.d1.97.c3.38.2e.62.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 16:15:02.653 [RTPS_MSG_IN Info] (ID:140118702663424) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:03.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:03.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:03.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:03.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:03.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:03.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:15:03.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:03.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:03.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:03.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:03.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:03.146 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:03.146 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:04.510 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:04.511 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:04.511 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:04.511 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:04.511 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:04.511 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:06.146 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:06.146 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:06.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:06.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:06.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:06.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:15:06.146 [TRANSPORT_UDP Info] UDPTransport: 552 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:15:06.146 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:06.146 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:06.146 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:06.146 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:06.146 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:06.147 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:06.147 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:06.147 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:06.147 [RTPS_READER_HISTORY Info] Change 1 added with 436 bytes -> Function add_change
+2024-07-27 16:15:06.147 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_PDP Info] Message from own RTPSParticipant, removing -> Function onNewCacheChangeAdded
+2024-07-27 16:15:06.147 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 16:15:07.510 [RTPS_MSG_IN Info] (ID:140118727841536) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118727841536) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) from Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 2 -> Function proc_Submsg_Data
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Trying to add change 1 TO reader: 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 16:15:07.511 [RTPS_MSG_IN Info] (ID:140118719448832) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 16:15:07.647 [DATA_WRITER Info] 0.0.1.3 in topic: HelloWorld -> Function ~DataWriterImpl
+2024-07-27 16:15:07.647 [RTPS_LIVELINESS Info] 0.0.1.3 from Liveliness Protocol -> Function remove_local_writer
+2024-07-27 16:15:07.647 [RTPS_EDP Info] 0.0.1.3 -> Function removeLocalWriter
+2024-07-27 16:15:07.647 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 16:15:07.647 [RTPS_WRITER Info] Change 1 to be removed. -> Function change_removed_by_history
+2024-07-27 16:15:07.647 [RTPS_WRITER_HISTORY Info] Change 2 added with 0 bytes -> Function prepare_and_add_change
+2024-07-27 16:15:07.647 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:07.647 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:07.647 [TRANSPORT_UDP Info] UDPTransport: 164 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:07.647 [TRANSPORT_UDP Info] UDPTransport: 164 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:07.647 [RTPS_PDP Info] Removing writer proxy data 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 -> Function removeWriterProxyData
+2024-07-27 16:15:07.647 [RTPS_EDP Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 -> Function unpairWriterProxy
+2024-07-27 16:15:07.648 [RTPS_WRITER Info] StatefulWriter destructor -> Function ~StatefulWriter
+2024-07-27 16:15:07.648 [RTPS_WRITER Info] RTPSWriter destructor -> Function ~RTPSWriter
+2024-07-27 16:15:07.648 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.648 [RTPS_UTILS Info] PayloadPool destructor -> Function ~TopicPayloadPool
+2024-07-27 16:15:07.648 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.648 [RTPS_PARTICIPANT Info] Removing event thread -> Function stop_thread
+2024-07-27 16:15:07.649 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 16:15:07.650 [RTPS_WRITER_HISTORY Info] Change 2 added with 436 bytes -> Function prepare_and_add_change
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 16:15:07.650 [TRANSPORT_UDP Info] UDPTransport: 148 bytes TO endpoint: 192.168.0.101:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:07.650 [TRANSPORT_UDP Info] UDPTransport: 148 bytes TO endpoint: 192.168.2.109:7410 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:07.650 [TRANSPORT_UDP Info] UDPTransport: 148 bytes TO endpoint: 239.255.0.1:7400 FROM 0.0.0.0:51952 -> Function send
+2024-07-27 16:15:07.650 [TRANSPORT_UDP Info] UDPTransport: 148 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.0.100:34561 -> Function send
+2024-07-27 16:15:07.650 [TRANSPORT_UDP Info] UDPTransport: 148 bytes TO endpoint: 239.255.0.1:7400 FROM 192.168.2.110:44344 -> Function send
+2024-07-27 16:15:07.650 [RTPS_PARTICIPANT Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 16:15:07.650 [RTPS_EDP Info] 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 -> Function unpairReaderProxy
+2024-07-27 16:15:07.650 [RTPS_LIVELINESS Info] for RTPSParticipant: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_LIVELINESS Info] Removing remote writer from my local Builtin Reader -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_READER Info] Writer proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c2 removed from 0.2.0.c7 -> Function matched_writer_remove
+2024-07-27 16:15:07.650 [RTPS_LIVELINESS Info] Removing remote reader from my local Builtin Writer -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Reader Proxy removed: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c7 -> Function matched_reader_remove
+2024-07-27 16:15:07.650 [RTPS_EDP Info] For RTPSParticipant: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_READER Info] Writer proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.3.c2 removed from 0.0.3.c7 -> Function matched_writer_remove
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Reader Proxy removed: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.3.c7 -> Function matched_reader_remove
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Change 2 to be removed. -> Function change_removed_by_history
+2024-07-27 16:15:07.650 [RTPS_EDP Info] Adding SEDP Sub Writer to my Sub Reader -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_READER Info] Writer proxy 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c2 removed from 0.0.4.c7 -> Function matched_writer_remove
+2024-07-27 16:15:07.650 [RTPS_EDP Info] Adding SEDP Sub Reader to my Sub Writer -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Reader Proxy removed: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.4.c7 -> Function matched_reader_remove
+2024-07-27 16:15:07.650 [RTPS_PDP Info] For RTPSParticipant: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 -> Function removeRemoteEndpoints
+2024-07-27 16:15:07.650 [RTPS_READER Info] Writer 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c2 removed from 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function matched_writer_remove
+2024-07-27 16:15:07.650 [RTPS_WRITER Info] Reader Proxy removed: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.1.0.c7 -> Function matched_reader_remove
+2024-07-27 16:15:07.651 [RTPS_READER Info] StatefulReader destructor. -> Function ~StatefulReader
+2024-07-27 16:15:07.651 [RTPS_READER Info] Removing reader 0.2.0.c7 -> Function ~RTPSReader
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] StatefulWriter destructor -> Function ~StatefulWriter
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] RTPSWriter destructor -> Function ~RTPSWriter
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] PayloadPool destructor -> Function ~TopicPayloadPool
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c2 -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.2.0.c7 -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_READER Info] StatefulReader destructor. -> Function ~StatefulReader
+2024-07-27 16:15:07.651 [RTPS_READER Info] Removing reader 0.0.3.c7 -> Function ~RTPSReader
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_READER Info] StatefulReader destructor. -> Function ~StatefulReader
+2024-07-27 16:15:07.651 [RTPS_READER Info] Removing reader 0.0.4.c7 -> Function ~RTPSReader
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] StatefulWriter destructor -> Function ~StatefulWriter
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] RTPSWriter destructor -> Function ~RTPSWriter
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] PayloadPool destructor -> Function ~TopicPayloadPool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] StatefulWriter destructor -> Function ~StatefulWriter
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] RTPSWriter destructor -> Function ~RTPSWriter
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] PayloadPool destructor -> Function ~TopicPayloadPool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] StatelessWriter destructor -> Function ~StatelessWriter
+2024-07-27 16:15:07.651 [RTPS_WRITER Info] RTPSWriter destructor -> Function ~RTPSWriter
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_READER Info] Removing reader 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.1.0.c7 -> Function ~StatelessReader
+2024-07-27 16:15:07.651 [RTPS_READER Info] Removing reader 0.1.0.c7 -> Function ~RTPSReader
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] ChangePool destructor -> Function ~CacheChangePool
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_HISTORY Info]  -> Function ~History
+2024-07-27 16:15:07.651 [RTPS_PARTICIPANT Info] 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 16:15:07.651 [RTPS_UTILS Info] PayloadPool destructor -> Function ~TopicPayloadPool
+2024-07-27 16:15:07.651 [RTPS_PARTICIPANT Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 16:15:07.651 [RTPS_PARTICIPANT Info] |GUID UNKNOWN| -> Function ~ParticipantProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] 01.0f.d1.97.c3.38.2e.62.00.00.00.00|0.0.1.3 -> Function ~WriterProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: 01.0f.46.a2.20.0b.22.f4.00.00.00.00|0.0.1.4 -> Function ~ReaderProxyData
+2024-07-27 16:15:07.651 [RTPS_PARTICIPANT Info] Removing event thread -> Function stop_thread
+2024-07-27 16:15:07.652 [RTPS_MSG_IN Info]  -> Function ~MessageReceiver
+2024-07-27 16:15:07.652 [RTPS_MSG_IN Info]  -> Function ~MessageReceiver
+2024-07-27 16:15:07.652 [RTPS_MSG_IN Info]  -> Function ~MessageReceiver
+2024-07-27 16:15:07.652 [RTPS_MSG_IN Info]  -> Function ~MessageReceiver
+2024-07-27 16:15:07.652 [RTPS_PARTICIPANT Info] Removing event thread -> Function stop_thread
+
+Process finished with exit code 0

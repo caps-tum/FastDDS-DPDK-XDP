@@ -1,0 +1,305 @@
+jupiter@sie-2:~/dds-perf/cyclone-dpdk/Fast-DDS/cmake-build-debug$ sudo ./examples/cpp/dds/HelloWorldExampleXDP/DDSHelloWorldExampleXDP subscriber
+Starting
+2024-07-27 17:25:16.821 [RTPS_PARTICIPANT Info]  -> Function createParticipant
+Assuming XDP module path: ./ddsi_xdp_l2_kern.o
+XDP: BPF program loaded.
+libbpf: elf: skipping unrecognized data section(7) xdp_metadata
+libbpf: elf: skipping unrecognized data section(7) xdp_metadata
+libbpf: Error in bpf_create_map_xattr(xsks_map):ERROR: strerror_r(-524)=22(-524). Retrying without BTF.
+XDP: Program attached to eno2.
+XDP: Found xsks_map with file descriptor 15.
+XDP: Initialization success!
+L2Transport: Get default metatraffic multicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400 to XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Get default metatraffic unicast locator: [XDP:[00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:]:7410]
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+XDP: Opened input channel XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 max message size 4096
+XDP: Read thread started.
+2024-07-27 17:25:16.962 [RTPS_MSG_IN Info] Created with CDRMessage of size: 4096 -> Function MessageReceiver
+L2Transport: Get default unicast locator: [XDP:[00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:]:7411]
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:]:7411 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7411
+2024-07-27 17:25:16.962 [RTPS_PARTICIPANT Info] Participant_sub Created with NO default Unicast Locator List, adding Locators:[XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7411] -> Function setup_user_traffic
+2024-07-27 17:25:16.963 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 17:25:16.963 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 17:25:16.963 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 17:25:16.963 [RTPS_PROXY_DATA Info] ReaderProxyData destructor: |GUID UNKNOWN| -> Function ~ReaderProxyData
+2024-07-27 17:25:16.964 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 17:25:16.964 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 17:25:16.964 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 17:25:16.964 [RTPS_PROXY_DATA Info] |GUID UNKNOWN| -> Function ~WriterProxyData
+2024-07-27 17:25:16.964 [RTPS_PDP Info] Beginning -> Function initPDP
+2024-07-27 17:25:16.964 [RTPS_PDP Info] Beginning -> Function createPDPEndpoints
+2024-07-27 17:25:16.964 [RTPS_PARTICIPANT Info] Creating reader of type BEST_EFFORT -> Function create_reader
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.965 [RTPS_UTILS Info] Creating CacheChangePool of size: 26 -> Function init
+2024-07-27 17:25:16.965 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.965 [RTPS_UTILS Info] Allocating group of cache changes of size: 26 -> Function allocateGroup
+2024-07-27 17:25:16.965 [RTPS_READER Info] RTPSReader created correctly -> Function init
+XDP: Connection 0 opened on locator ff:ff:ff:ff:ff:ff port 7400
+2024-07-27 17:25:16.966 [RTPS_PARTICIPANT Info] Creating writer of type BEST_EFFORT -> Function create_writer
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.966 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 17:25:16.966 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.966 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 17:25:16.966 [RTPS_WRITER Info] RTPSWriter created -> Function init
+L2Transport: Add default output locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:1
+XDP: Connection 1 opened on locator ff:ff:ff:ff:ff:ff port 1
+L2Transport: is local locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400: 0
+XDP: Connection 2 opened on locator ff:ff:ff:ff:ff:ff port 7400
+2024-07-27 17:25:16.967 [RTPS_PDP Info] SPDP Endpoints creation finished -> Function createPDPEndpoints
+2024-07-27 17:25:16.967 [RTPS_EDP Info] Beginning Simple Endpoint Discovery Protocol -> Function initEDP
+2024-07-27 17:25:16.967 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.967 [RTPS_UTILS Info] Creating CacheChangePool of size: 21 -> Function init
+2024-07-27 17:25:16.967 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.968 [RTPS_UTILS Info] Allocating group of cache changes of size: 21 -> Function allocateGroup
+2024-07-27 17:25:16.968 [RTPS_WRITER Info] RTPSWriter created -> Function init
+L2Transport: Add default output locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:1
+XDP: Connection 3 opened on locator ff:ff:ff:ff:ff:ff port 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+2024-07-27 17:25:16.968 [RTPS_EDP Info] SEDP Publication Writer created -> Function createSEDPEndpoints
+2024-07-27 17:25:16.968 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.968 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 17:25:16.968 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.969 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 17:25:16.969 [RTPS_READER Info] RTPSReader created correctly -> Function init
+L2Transport: Add default output locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:1
+XDP: Connection 4 opened on locator ff:ff:ff:ff:ff:ff port 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+2024-07-27 17:25:16.969 [RTPS_EDP Info] SEDP Subscription Reader created -> Function createSEDPEndpoints
+2024-07-27 17:25:16.969 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.969 [RTPS_UTILS Info] Creating CacheChangePool of size: 2 -> Function init
+2024-07-27 17:25:16.969 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.970 [RTPS_UTILS Info] Allocating group of cache changes of size: 2 -> Function allocateGroup
+2024-07-27 17:25:16.970 [RTPS_READER Info] RTPSReader created correctly -> Function init
+L2Transport: Add default output locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:1
+XDP: Connection 5 opened on locator ff:ff:ff:ff:ff:ff port 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+2024-07-27 17:25:16.970 [RTPS_EDP Info] SEDP Publication Reader created -> Function createSEDPEndpoints
+2024-07-27 17:25:16.970 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.970 [RTPS_UTILS Info] Creating CacheChangePool of size: 21 -> Function init
+2024-07-27 17:25:16.970 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.970 [RTPS_UTILS Info] Allocating group of cache changes of size: 21 -> Function allocateGroup
+2024-07-27 17:25:16.971 [RTPS_WRITER Info] RTPSWriter created -> Function init
+L2Transport: Add default output locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:1
+XDP: Connection 6 opened on locator ff:ff:ff:ff:ff:ff port 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+2024-07-27 17:25:16.971 [RTPS_EDP Info] SEDP Subscription Writer created -> Function createSEDPEndpoints
+2024-07-27 17:25:16.971 [RTPS_EDP Info] Creation finished -> Function createSEDPEndpoints
+2024-07-27 17:25:16.971 [RTPS_LIVELINESS Info] Initializing Liveliness Protocol -> Function initWL
+2024-07-27 17:25:16.971 [RTPS_PARTICIPANT Info] Creating writer of type RELIABLE -> Function create_writer
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.972 [RTPS_UTILS Info] Creating CacheChangePool of size: 3 -> Function init
+2024-07-27 17:25:16.972 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.972 [RTPS_UTILS Info] Allocating group of cache changes of size: 3 -> Function allocateGroup
+2024-07-27 17:25:16.972 [RTPS_WRITER Info] RTPSWriter created -> Function init
+XDP: Connection 7 opened on locator ff:ff:ff:ff:ff:ff port 7400
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400: 0
+2024-07-27 17:25:16.972 [RTPS_LIVELINESS Info] Builtin Liveliness Writer created -> Function createEndpoints
+2024-07-27 17:25:16.972 [RTPS_PARTICIPANT Info] Creating reader of type RELIABLE -> Function create_reader
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+L2Transport: Fill unicast locator: XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400
+L2Transport: Normalize locator: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 to XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410
+2024-07-27 17:25:16.973 [RTPS_UTILS Info] Creating CacheChangePool of size: 0 -> Function init
+2024-07-27 17:25:16.973 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:16.973 [RTPS_UTILS Info] Allocating group of cache changes of size: 1 -> Function allocateGroup
+2024-07-27 17:25:16.973 [RTPS_READER Info] RTPSReader created correctly -> Function init
+XDP: Connection 8 opened on locator ff:ff:ff:ff:ff:ff port 7400
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400: 0
+2024-07-27 17:25:16.973 [RTPS_LIVELINESS Info] Builtin Liveliness Reader created -> Function createEndpoints
+2024-07-27 17:25:16.973 [RTPS_PARTICIPANT Info] RTPSParticipant "Participant_sub" with guidPrefix: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function RTPSParticipantImpl
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410: 1
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:FF:FF:FF:FF:FF:FF:]:7400: 0
+2024-07-27 17:25:16.974 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 17:25:16.974 [RTPS_WRITER_HISTORY Info] Change 1 added with 352 bytes -> Function prepare_and_add_change
+2024-07-27 17:25:16.974 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:16.974 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:16.974 [RTPS_PARTICIPANT Info] 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 17:25:16.975 [PARTICIPANT Info] Type HelloWorld registered. -> Function register_type
+2024-07-27 17:25:16.975 [SUBSCRIBER Info] CREATING SUBSCRIBER IN TOPIC: HelloWorldSharedMemTopic -> Function create_datareader
+2024-07-27 17:25:16.976 [DATA_READER Info] Data sharing disabled because data type is not bounded -> Function check_datasharing_compatible
+2024-07-27 17:25:17.073 [RTPS_PARTICIPANT Info] Creating reader of type BEST_EFFORT -> Function create_reader
+2024-07-27 17:25:17.073 [RTPS_UTILS Info] Creating CacheChangePool of size: 101 -> Function init
+2024-07-27 17:25:17.073 [RTPS_UTILS Info] Semi-Static Mode is active, preallocating memory for pool_size. Size of the cachechanges can be increased -> Function init
+2024-07-27 17:25:17.073 [RTPS_UTILS Info] Allocating group of cache changes of size: 101 -> Function allocateGroup
+2024-07-27 17:25:17.073 [RTPS_READER Info] RTPSReader created correctly -> Function init
+L2Transport: DoInputLocatorsMatch: XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7410 XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:43:]:7411: 0
+2024-07-27 17:25:17.074 [RTPS_EDP Info] Adding 0.0.1.4 in topic HelloWorldSharedMemTopic -> Function newLocalReaderProxyData
+2024-07-27 17:25:17.074 [RTPS_PDP Info] Adding reader proxy data 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.0.1.4 -> Function addReaderProxyData
+2024-07-27 17:25:17.075 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:17.075 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+ParticipantListener::on_subscriber_discovery
+2024-07-27 17:25:17.079 [RTPS_EDP Info] 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.0.1.4 in topic: "HelloWorldSharedMemTopic" -> Function pairing_reader_proxy_with_any_local_writer
+2024-07-27 17:25:17.080 [RTPS_EDP Info] 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.0.1.4 in topic: "HelloWorldSharedMemTopic" -> Function pairingReader
+2024-07-27 17:25:17.080 [RTPS_EDP Info] 0.0.1.4 -> Function processLocalReaderProxyData
+2024-07-27 17:25:17.080 [RTPS_WRITER Info] Creating new change -> Function new_change
+2024-07-27 17:25:17.080 [RTPS_WRITER_HISTORY Info] Change 1 added with 364 bytes -> Function prepare_and_add_change
+2024-07-27 17:25:17.080 [RTPS_WRITER Info] No reader proxy to add change. -> Function unsent_change_added_to_history
+Subscriber logging level: 2
+Subscriber running. Please press enter to stop the Subscriber
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:17.175 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:17.175 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:17.275 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:17.275 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:17.375 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:17.375 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:17.475 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:17.475 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.475 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:20.475 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: 2bd7eaa8, 0 umems free).
+2024-07-27 17:25:20.477 [RTPS_MSG_IN Info] (ID:139652312844032) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.477 [RTPS_MSG_IN Info] (ID:139652312844032) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 17:25:20.477 [RTPS_MSG_IN Info] (ID:139652312844032) from Writer 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 17:25:20.477 [RTPS_MSG_IN Info] (ID:139652312844032) Trying to add change 1 TO reader: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 17:25:20.477 [RTPS_READER_HISTORY Info] Change 1 added with 352 bytes -> Function add_change
+2024-07-27 17:25:20.477 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+ParticipantListener::on_participant_discovery: Participant_pub 0 not ignored
+ParticipantListener::on_participant_discovery: Participant_pub 0
+2024-07-27 17:25:20.477 [RTPS_PDP_DISCOVERY Info] New participant 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.1.c1 at MTTLoc: {UNICAST:[XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410]} DefLoc:{UNICAST:[XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7411]} -> Function notify_and_maybe_ignore_new_participant
+2024-07-27 17:25:20.477 [RTPS_READER Info] Writer 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2 added to reader 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.1.0.c7 -> Function matched_writer_add
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] Adding reader 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c7 to 0.1.0.c2 as remote reader -> Function matched_reader_add
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.478 [RTPS_EDP Info] New DPD received, adding remote endpoints to our SimpleEDP endpoints -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.478 [RTPS_EDP Info] Adding SEDP Pub Writer to my Pub Reader -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.478 [RTPS_READER Info] Writer Proxy created in reader: 0.0.3.c7 -> Function WriterProxy
+XDP: Connection 9 opened on locator d4:f5:27:ea:ae:41 port 7410
+2024-07-27 17:25:20.478 [RTPS_READER Info] Writer Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.3.c2 added to 0.0.3.c7 -> Function matched_writer_add
+2024-07-27 17:25:20.478 [RTPS_EDP Info] Adding SEDP Pub Reader to my Pub Writer -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.478 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] Adding reader 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.3.c7 to 0.0.3.c2 as remote reader -> Function matched_reader_add
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.3.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.3.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] 0.0.3.c2 Sending Heartbeat (1 - 0) -> Function send_heartbeat_nts_
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: a6a411a6, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.478 [RTPS_WRITER Info] Reader Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.3.c7 added to 0.0.3.c2 with 1(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 17:25:20.478 [RTPS_EDP Info] Adding SEDP Sub Writer to my Sub Reader -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.479 [RTPS_READER Info] Writer Proxy created in reader: 0.0.4.c7 -> Function WriterProxy
+XDP: Connection 10 opened on locator d4:f5:27:ea:ae:41 port 7410
+2024-07-27 17:25:20.479 [RTPS_READER Info] Writer Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.4.c2 added to 0.0.4.c7 -> Function matched_writer_add
+2024-07-27 17:25:20.479 [RTPS_EDP Info] Adding SEDP Sub Reader to my Sub Writer -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.479 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.4.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] Adding reader 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.4.c7 to 0.0.4.c2 as remote reader -> Function matched_reader_add
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.4.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: db8598c5, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] Reader Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.4.c7 added to 0.0.4.c2 with 1(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 17:25:20.479 [RTPS_LIVELINESS Info] Adding remote writer to my local Builtin Reader -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.479 [RTPS_READER Info] Writer Proxy created in reader: 0.2.0.c7 -> Function WriterProxy
+XDP: Connection 11 opened on locator d4:f5:27:ea:ae:41 port 7410
+2024-07-27 17:25:20.479 [RTPS_READER Info] Writer Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.2.0.c2 added to 0.2.0.c7 -> Function matched_writer_add
+2024-07-27 17:25:20.479 [RTPS_LIVELINESS Info] Adding remote reader to my local Builtin Writer -> Function assignRemoteEndpoints
+2024-07-27 17:25:20.479 [RTPS_READER_PROXY Info] Reader Proxy started -> Function start
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] Adding reader 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.2.0.c7 to 0.2.0.c2 as remote reader -> Function matched_reader_add
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.2.0.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+L2Transport: Select locators: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.2.0.c7 unicast XDP:[00:00:00:00:00:00:00:00:00:00:D4:F5:27:EA:AE:41:]:7410
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] 0.2.0.c2 Sending Heartbeat (1 - 0) -> Function send_heartbeat_nts_
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: cc6f9148, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.479 [RTPS_WRITER Info] Reader Proxy 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.2.0.c7 added to 0.2.0.c2 with 1(u)-0(m) locators -> Function matched_reader_add
+2024-07-27 17:25:20.479 [RTPS_PARTICIPANT Info] 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.0.1.c1 -> Function ~ParticipantProxyData
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Sub Message DATA processed -> Function proc_Submsg_DataXDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: 8ea974a0, 0 umems free).
+
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_READER Info] 0.0.3.c2: up to seq_num: 1 -> Function lost_changes_update
+NotifyChanges: Next sequence is 2024-07-27 17:25:20.480 [RTPS_READER Info] 0.0.3.c2: changes up to seq_num: 1 missing. -> Function missing_changes_update18446744069414584320
+
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: f388fdc3, 0 umems free).
+NotifyChanges: Next sequence is 18446744069414584320
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: f87bd075, 0 umems free).
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: 9615e0db, 2047 umems free, 1 pending).
+NotifyChanges: Next sequence is 18446744069414584320
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 124 bytes: 52 54 50 ... 00 00 00, CRC: c0f4c493, 0 umems free).
+2024-07-27 17:25:20.480 XDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 128 bytes: 52 54 50 ... 00 00 00, CRC: c3390cbe, 0 umems free).
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 124 bytes: 52 54 50 ... 00 00 00, CRC: a78023ab, 2047 umems free, 1 pending).
+[RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_READER Info] 0.0.4.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 17:25:20.480 [RTPS_READER Info] 0.0.4.c2: changes up to seq_num: 0 missing. -> Function missing_changes_update
+2024-07-27 17:25:20.480 [RTPS_READER Info] Sending ACKNACK: 1:1- -> Function send_acknack
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Heartbeat Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_READER Info] 0.2.0.c2: up to seq_num: 1 -> Function lost_changes_update
+2024-07-27 17:25:20.480 [RTPS_READER Info] 0.2.0.c2: changes up to seq_num: 0 missing. -> Function missing_changes_update
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_READER Info] Sending ACKNACK: 1: -> Function send_acknack
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.480 [RTPS_MSG_IN Info] (ID:139652312844032) Acknack Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.480 [RTPS_READER_PROXY Info] Requested Changes: 1:1- -> Function requested_changes_set
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7410, 124 bytes: 52 54 50 ... 00 00 00, CRC: ceb2c778, 0 umems free).
+2024-07-27 17:25:20.485 [RTPS_MSG_IN Info] (ID:139652312844032) InfoDST message received, processing... -> Function processCDRMsg
+2024-07-27 17:25:20.485 [RTPS_MSG_IN Info] (ID:139652312844032) DST RTPSParticipant is now: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00 -> Function proc_Submsg_InfoDST
+2024-07-27 17:25:20.485 [RTPS_MSG_IN Info] (ID:139652312844032) Acknack Submsg received, processing... -> Function processCDRMsg
+XDP: Write complete (dest d4:f5:27:ea:ae:41 port 7410, 124 bytes: 52 54 50 ... 00 00 00, CRC: 56fc5b07, 2047 umems free, 1 pending).
+2024-07-27 17:25:20.485 [RTPS_READER Info] Sending ACKNACK: 1: -> Function send_acknack
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: 2bd7eaa8, 0 umems free).
+2024-07-27 17:25:21.275 [RTPS_MSG_IN Info] (ID:139652312844032) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:21.275 [RTPS_MSG_IN Info] (ID:139652312844032) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 17:25:21.275 [RTPS_MSG_IN Info] (ID:139652312844032) from Writer 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 17:25:21.275 [RTPS_MSG_IN Info] (ID:139652312844032) Trying to add change 1 TO reader: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 17:25:21.275 [RTPS_READER_HISTORY Info] Change 1 added with 352 bytes -> Function add_change
+2024-07-27 17:25:21.275 [RTPS_PDP Info] SPDP Message received from: 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2 -> Function onNewCacheChangeAdded
+2024-07-27 17:25:21.275 [RTPS_MSG_IN Info] (ID:139652312844032) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 17:25:21.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 17:25:22.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:23.475 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:23.475 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 17:25:23.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: 2bd7eaa8, 0 umems free).
+2024-07-27 17:25:24.275 [RTPS_MSG_IN Info] (ID:139652312844032) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:24.275 [RTPS_MSG_IN Info] (ID:139652312844032) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 17:25:24.275 [RTPS_MSG_IN Info] (ID:139652312844032) from Writer 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 17:25:24.275 [RTPS_MSG_IN Info] (ID:139652312844032) Trying to add change 1 TO reader: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 17:25:24.275 [RTPS_MSG_IN Info] (ID:139652312844032) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 17:25:24.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 17:25:25.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:26.475 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:26.475 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 17:25:26.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Read complete (src d4:f5:27:ea:ae:41 port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: 2bd7eaa8, 0 umems free).
+2024-07-27 17:25:27.275 [RTPS_MSG_IN Info] (ID:139652312844032) InfoTS Submsg received, processing... -> Function processCDRMsg
+2024-07-27 17:25:27.275 [RTPS_MSG_IN Info] (ID:139652312844032) Data Submsg received, processing. -> Function processCDRMsg
+2024-07-27 17:25:27.275 [RTPS_MSG_IN Info] (ID:139652312844032) from Writer 01.0f.d1.97.2d.39.ad.76.00.00.00.00|0.1.0.c2; possible RTPSReader entities: 4 -> Function proc_Submsg_Data
+2024-07-27 17:25:27.275 [RTPS_MSG_IN Info] (ID:139652312844032) Trying to add change 1 TO reader: 01.0f.3b.7c.37.0b.8b.2a.00.00.00.00|0.1.0.c7 -> Function processDataMsg
+2024-07-27 17:25:27.275 [RTPS_MSG_IN Info] (ID:139652312844032) Sub Message DATA processed -> Function proc_Submsg_Data
+2024-07-27 17:25:27.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 17:25:28.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+XDP: Write complete (dest ff:ff:ff:ff:ff:ff port 7400, 468 bytes: 52 54 50 ... 00 00 00, CRC: f578a0d2, 2047 umems free, 1 pending).
+2024-07-27 17:25:29.475 [RTPS_WRITER Info] Sending relevant changes as DATA/DATA_FRAG messages -> Function add_data
+2024-07-27 17:25:29.475 [RTPS_WRITER Info] Sending INFO_TS message -> Function add_info_ts_in_buffer
+2024-07-27 17:25:29.479 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_
+2024-07-27 17:25:30.480 [RTPS_WRITER Info] 0.0.4.c2 Sending Heartbeat (1 - 1) -> Function send_heartbeat_nts_

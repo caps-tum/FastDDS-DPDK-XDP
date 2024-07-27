@@ -712,6 +712,8 @@ void MessageReceiver::findAllReaders(
 {
     if (readerID != c_EntityId_Unknown)
     {
+        // TODO: VB: 4 associated readers in regular.
+        // TODO: VB: XDP also has 4 associated readers.
         const auto readers = associated_readers_.find(readerID);
         if (readers != associated_readers_.end())
         {
