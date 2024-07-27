@@ -126,7 +126,7 @@ bool ddsi_DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, 
     char *pseudoArgs[] = {arg0, NULL};
     int ret = rte_eal_init(0, pseudoArgs);
     if (ret != 0) {
-        printf("Unable to initialize DPDK RTE_EAL. Please check the RTE log messages above for errors.");
+        printf("Unable to initialize DPDK RTE_EAL. Please check the RTE log messages above for errors.\n");
         return false;
     }
     printf("RTE EAL init success.\n");
@@ -136,7 +136,7 @@ bool ddsi_DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, 
             "MBUF_POOL_TX", NUM_MBUFS, MBUF_CACHE_SIZE, 0, RTE_MBUF_DEFAULT_BUF_SIZE, (int) rte_socket_id()
     );
     if (m_dpdk_memory_pool_tx == NULL) {
-        printf("Failed to allocate DPDK TX mempool.  Please check the RTE log messages above for errors.");
+        printf("Failed to allocate DPDK TX mempool.  Please check the RTE log messages above for errors.\n");
         return false;
     }
     // RX buffers
@@ -144,14 +144,12 @@ bool ddsi_DPDKTransport::init(const fastrtps::rtps::PropertyPolicy *properties, 
             "MBUF_POOL_RX", NUM_MBUFS, MBUF_CACHE_SIZE, 0, RTE_MBUF_DEFAULT_BUF_SIZE, (int) rte_socket_id()
     );
     if (m_dpdk_memory_pool_rx == NULL) {
-        printf("Failed to allocate DPDK RX mempool.  Please check the RTE log messages above for errors.");
+        printf("Failed to allocate DPDK RX mempool.  Please check the RTE log messages above for errors.\n");
         return false;
     }
 
     if (dpdk_port_init(dpdk_port_identifier, m_dpdk_memory_pool_rx) != 0) {
-        rte_exit(EXIT_FAILURE, "Cannot init port %"
-                               PRIu16
-                               "\n", dpdk_port_identifier);
+        rte_exit(EXIT_FAILURE, "Cannot init port %" PRIu16 "\n", dpdk_port_identifier);
     }
 
     auto interfaceAddress =  get_dpdk_interface_mac_address(dpdk_port_identifier);
@@ -172,15 +170,18 @@ bool ddsi_DPDKTransport::IsInputChannelOpen(const eprosima::fastdds::rtps::Locat
 bool ddsi_DPDKTransport::OpenOutputChannel(SendResourceList &sender_resource_list, const Locator &locator) {
     assert(locator.kind == transport_kind_);
     printf(
-            "XDP: Connection opened on locator %02x:%02x:%02x:%02x:%02x:%02x port %i\n",
+            "XDP: Connection %i opened on locator %02x:%02x:%02x:%02x:%02x:%02x port %i\n",
+            output_channels_open,
             locator.address[10], locator.address[11], locator.address[12], locator.address[13], locator.address[14], locator.address[15],
             locator.port
     );
+    if(output_channels_open == 0) {
+        sender_resource_list.emplace_back(
+                static_cast<fastrtps::rtps::SenderResource*>(new ddsi_DPDKSenderResource(*this))
+        );
+    }
     output_channels_open++;
-    assert(output_channels_open == 1);
-    sender_resource_list.push_back(
-            std::unique_ptr<ddsi_DPDKSenderResource>(new ddsi_DPDKSenderResource(*this))
-    );
+//    assert(output_channels_open == 1);
     return true;
 }
 
@@ -245,12 +246,14 @@ void ddsi_DPDKTransport::processIncomingData() {
                 srcloc
         );
 
-//        printf("DPDK: Read complete (port %i, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %i mbufs free).\n",
-//               srcloc->port, bytes_received,
-//               buf[0], buf[1], buf[2], buf[bytes_received-3], buf[bytes_received-2], buf[bytes_received-1],
-//               rte_hash_crc(packet->payload, bytes_received, 1337),
-//               rte_mempool_avail_count(m_factory->m_dpdk_memory_pool_rx)
-//        );
+        printf("DPDK: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %hu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %u mbufs free).\n",
+               packet->header.s_addr.addr_bytes[0], packet->header.s_addr.addr_bytes[1], packet->header.s_addr.addr_bytes[2],
+               packet->header.s_addr.addr_bytes[3], packet->header.s_addr.addr_bytes[4], packet->header.s_addr.addr_bytes[5],
+               srcloc.port, payload_size,
+               packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[payload_size-3], packet->payload[payload_size-2], packet->payload[payload_size-1],
+               rte_hash_crc(packet->payload, payload_size, 1337),
+               rte_mempool_avail_count(m_dpdk_memory_pool_rx)
+        );
 
         // Packet is only allocated if it was successfully received.
         rte_pktmbuf_free(mbuf[0]);

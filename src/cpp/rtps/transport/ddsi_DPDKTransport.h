@@ -70,7 +70,7 @@ public:
     int32_t transport_kind_ = DPDK_TRANSPORT_KIND;
 
     struct rte_mempool *m_dpdk_memory_pool_tx;
-    uint16_t dpdk_port_identifier;
+    uint16_t dpdk_port_identifier = 0;
     uint16_t dpdk_queue_identifier = 0;
     int output_channels_open = 0;
 

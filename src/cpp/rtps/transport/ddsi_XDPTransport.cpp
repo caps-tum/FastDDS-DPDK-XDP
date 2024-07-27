@@ -154,8 +154,8 @@ bool ddsi_XDPTransport::OpenOutputChannel(SendResourceList &sender_resource_list
             locator.port
     );
     if(output_channels_open == 0) {
-        sender_resource_list.push_back(
-                std::unique_ptr<ddsi_XDPSenderResource>(new ddsi_XDPSenderResource(*this))
+        sender_resource_list.emplace_back(
+                static_cast<fastrtps::rtps::SenderResource*>(new ddsi_XDPSenderResource(*this))
         );
     }
     output_channels_open++;

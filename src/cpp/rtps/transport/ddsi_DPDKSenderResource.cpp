@@ -3,6 +3,7 @@
 //
 
 #include <rte_ethdev.h>
+#include <rte_hash_crc.h>
 #include "ddsi_DPDKSenderResource.h"
 #include "ddsi_UserspaceL2Utils.h"
 #include "ddsi_DPDKTransport.h"
@@ -63,12 +64,15 @@ eprosima::fastdds::rtps::ddsi_DPDKSenderResource::ddsi_DPDKSenderResource(ddsi_D
             abort();
         }
 
-//    printf("DPDK: Write complete (port %i, %zu iovs, %zi bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %i mbufs free).\n",
-//           dst->port, niov, bytes_transferred,
-//           data_loc->payload[0], data_loc->payload[1], data_loc->payload[2], data_loc->payload[bytes_transferred-3], data_loc->payload[bytes_transferred-2], data_loc->payload[bytes_transferred-1],
-//           rte_hash_crc(data_loc->payload, bytes_transferred, 1337),
-//           rte_mempool_avail_count(factory->m_dpdk_memory_pool_tx)
-//    );
+        printf("DPDK: Write complete (dest %02x:%02x:%02x:%02x:%02x:%02x port %i, %u bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %u mbufs free).\n",
+               data_loc->header.d_addr.addr_bytes[0], data_loc->header.d_addr.addr_bytes[1], data_loc->header.d_addr.addr_bytes[2],
+               data_loc->header.d_addr.addr_bytes[3], data_loc->header.d_addr.addr_bytes[4], data_loc->header.d_addr.addr_bytes[5],
+               dst.port, total_bytes,
+               data_loc->payload[0], data_loc->payload[1], data_loc->payload[2],
+               data_loc->payload[total_bytes-3], data_loc->payload[total_bytes-2], data_loc->payload[total_bytes-1],
+               rte_hash_crc(data_loc->payload, total_bytes, 1337),
+               rte_mempool_avail_count(transport.m_dpdk_memory_pool_tx)
+        );
 
        return true;
 

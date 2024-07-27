@@ -45,7 +45,7 @@ bool HelloWorldSubscriber::init()
 //    Log::Reset();
 //    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
 //    Log::RegisterConsumer(std::move(stdout_consumer));
-//    Log::SetVerbosity(Log::Kind::Info);
+    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
