@@ -5,14 +5,15 @@
 #ifndef FASTDDS_XDPTRANSPORTDESCRIPTOR_H
 #define FASTDDS_XDPTRANSPORTDESCRIPTOR_H
 
+#include <rtps/transport/ddsi_XDPTransport.h>
 #include "fastdds/rtps/transport/PortBasedTransportDescriptor.hpp"
 
 namespace eprosima {
     namespace fastdds {
         namespace rtps {
 
-            // TODO
-            static constexpr uint32_t XDP_MAXIMUM_MESSAGE_SIZE = 1000;
+            // Approximately Ethernet MTU
+            static constexpr uint32_t XDP_MAXIMUM_MESSAGE_SIZE = 1400;
             static constexpr uint32_t XDP_MAXIMUM_INITIAL_PEERS_RANGE = 10;
 
 

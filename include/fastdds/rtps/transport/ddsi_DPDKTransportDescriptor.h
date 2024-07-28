@@ -11,8 +11,8 @@ namespace eprosima {
     namespace fastdds {
         namespace rtps {
 
-            // TODO
-            static constexpr uint32_t DPDK_MAXIMUM_MESSAGE_SIZE = 1000;
+            // Approximately Ethernet MTU
+            static constexpr uint32_t DPDK_MAXIMUM_MESSAGE_SIZE = 1400;
             static constexpr uint32_t DPDK_MAXIMUM_INITIAL_PEERS_RANGE = 1;
 
 
