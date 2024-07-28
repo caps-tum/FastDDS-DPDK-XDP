@@ -40,7 +40,7 @@ HelloWorldPublisher::HelloWorldPublisher()
 
 bool HelloWorldPublisher::init()
 {
-    Log::SetVerbosity(Log::Kind::Info);
+//    Log::SetVerbosity(Log::Kind::Info);
 
     hello_ = std::make_shared<HelloWorld>();
     hello_->index(0);

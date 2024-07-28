@@ -246,14 +246,14 @@ void ddsi_DPDKTransport::processIncomingData() {
                 srcloc
         );
 
-        printf("DPDK: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %hu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %u mbufs free).\n",
-               packet->header.s_addr.addr_bytes[0], packet->header.s_addr.addr_bytes[1], packet->header.s_addr.addr_bytes[2],
-               packet->header.s_addr.addr_bytes[3], packet->header.s_addr.addr_bytes[4], packet->header.s_addr.addr_bytes[5],
-               srcloc.port, payload_size,
-               packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[payload_size-3], packet->payload[payload_size-2], packet->payload[payload_size-1],
-               rte_hash_crc(packet->payload, payload_size, 1337),
-               rte_mempool_avail_count(m_dpdk_memory_pool_rx)
-        );
+//        printf("DPDK: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %hu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %u mbufs free).\n",
+//               packet->header.s_addr.addr_bytes[0], packet->header.s_addr.addr_bytes[1], packet->header.s_addr.addr_bytes[2],
+//               packet->header.s_addr.addr_bytes[3], packet->header.s_addr.addr_bytes[4], packet->header.s_addr.addr_bytes[5],
+//               srcloc.port, payload_size,
+//               packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[payload_size-3], packet->payload[payload_size-2], packet->payload[payload_size-1],
+//               rte_hash_crc(packet->payload, payload_size, 1337),
+//               rte_mempool_avail_count(m_dpdk_memory_pool_rx)
+//        );
 
         // Packet is only allocated if it was successfully received.
         rte_pktmbuf_free(mbuf[0]);
