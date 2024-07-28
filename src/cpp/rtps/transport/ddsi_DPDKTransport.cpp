@@ -222,7 +222,7 @@ void ddsi_DPDKTransport::processIncomingData() {
             tries++;
             if (tries >= 250) {
                 // TODO: This introduces latency, test it.
-                rte_delay_us_block(500);
+//                rte_delay_us_block(500);
 //            printf("Read: TRYAGAIN (%i bufs available)\n", rte_mempool_avail_count(mempool));
             }
 
