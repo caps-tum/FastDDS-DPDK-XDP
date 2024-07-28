@@ -779,6 +779,7 @@ DeliveryRetCode StatefulWriter::deliver_sample_to_network(
                 uint32_t last_processed = 0;
                 if (!m_separateSendingEnabled)
                 {
+                    // TODO: VB in XDP the number of selected locators is zero
                     size_t num_locators = locator_selector.locator_selector.selected_size();
                     if (num_locators > 0)
                     {

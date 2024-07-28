@@ -26,6 +26,15 @@ const uint8_t anyAddress[16] = {
 };
 
 
+// Notes on locators:
+
+// If the application does not define any Listening Locators, eProsima Fast DDS automatically enables a set of listening UDPv4 locators by default. This allows out-of-the-box communication in most cases, without the need of further configuring the Transport Layer.
+//
+//        If the application does not define any metatraffic Locator (neither unicast nor multicast), Fast DDS enables one multicast Locator that will be used during Discovery, and one unicast Locator that will be used for peer-to-peer communication with already discovered DomainParticipants.
+//
+//        If the application does not define any user-traffic Locator (neither unicast nor multicast), Fast DDS enables one unicast Locator that will be used for peer-to-peer communication of Topic data.
+// https://fast-dds.docs.eprosima.com/en/latest/fastdds/transport/listening_locators.html#listening-locators
+
 bool eprosima::fastdds::rtps::ddsi_l2_transport::IsLocatorSupported(const Locator &locator) const {
     // Identical to UDPTransport
     return locator.kind == transport_kind_;
@@ -91,16 +100,25 @@ eprosima::fastdds::rtps::ddsi_l2_transport::NormalizeLocator(const Locator &loca
 }
 
 void eprosima::fastdds::rtps::ddsi_l2_transport::select_locators(fastrtps::rtps::LocatorSelector &selector) const {
-    auto entries = selector.transport_starts();
+    auto &entries = selector.transport_starts();
 
     if(entries.empty()) {
+        std::cout << "L2Transport: Select locators: No entries!" << std::endl;
         return;
     }
 
     assert(selector.selected_size() == 0);
     assert(entries.size() == 1);
-    selector.select(0);
+
     fastrtps::rtps::LocatorSelectorEntry &entry = *entries.at(0);
+    // In the entry, we have to select an address as well.
+    // We use the first unicast address.
+    assert(entry.multicast.empty());
+    assert(entry.unicast.size() == 1);
+    entry.state.unicast.push_back(0);
+
+    // Select the entry itself
+    selector.select(0);
 //    assert(entry.multicast.size() == 1);
 //    assert(entry.unicast.empty());
     std::cout << "L2Transport: Select locators: " << entry.remote_guid;
@@ -110,13 +128,15 @@ void eprosima::fastdds::rtps::ddsi_l2_transport::select_locators(fastrtps::rtps:
     for(auto &locator : entry.unicast) {
         std::cout << " unicast " << locator;
     }
-    std::cout << std::endl;
+    std::cout << " selected " << selector.selected_size() << " entries." << std::endl;
+    assert(selector.selected_size() == 1);
 }
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::is_local_locator(const Locator &locator) const {
     assert(locator.kind == transport_kind_);
-    bool is_local = memcmp(locator.address, localLoc.address, sizeof(localLoc.address)) == 0
-            || memcmp(locator.address, anyAddress, sizeof(bcastAddress)) == 0;
+    bool is_local = memcmp(locator.address, localLoc.address, sizeof(localLoc.address)) == 0;
+    //  || memcmp(locator.address, anyAddress, sizeof(bcastAddress)) == 0
+    // In UDPv4 transport the any address is not considered local.
     std::cout << "L2Transport: is local locator: " << locator << ": " << is_local << std::endl;
     return is_local;
 //                return memcmp(

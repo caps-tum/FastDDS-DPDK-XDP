@@ -25,6 +25,7 @@
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/domain/qos/DomainParticipantQos.hpp>
 #include <fastdds/dds/publisher/Publisher.hpp>
+#include <fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h>
 
 using namespace eprosima::fastdds::dds;
 
@@ -39,6 +40,8 @@ HelloWorldPublisher::HelloWorldPublisher()
 
 bool HelloWorldPublisher::init()
 {
+    Log::SetVerbosity(Log::Kind::Info);
+
     hello_.index(0);
     hello_.message("HelloWorld");
 
@@ -48,6 +51,13 @@ bool HelloWorldPublisher::init()
     pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = false;
     pqos.wire_protocol().builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol = true;
     pqos.wire_protocol().builtin.discovery_config.static_edp_xml_config("file://HelloWorldSubscriber_static_disc.xml");
+
+    // Explicit configuration of SharedMem transport
+    pqos.transport().use_builtin_transports = false;
+    auto shm_transport = std::make_shared<eprosima::fastdds::rtps::ddsi_XDPTransportDescriptor>();
+    pqos.transport().user_transports.push_back(shm_transport);
+
+
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
 
     if (participant_ == nullptr)

@@ -117,7 +117,9 @@ bool UDPTransportInterface::DoInputLocatorsMatch(
         const Locator& left,
         const Locator& right) const
 {
-    return IPLocator::getPhysicalPort(left) == IPLocator::getPhysicalPort(right);
+    bool is_match = IPLocator::getPhysicalPort(left) == IPLocator::getPhysicalPort(right);
+    std::cout << "UDPTransport: DoInputLocatorsMatch: " << left << " " << right << ": " << is_match << std::endl;
+    return is_match;
 }
 
 bool UDPTransportInterface::init(

@@ -13,7 +13,7 @@ namespace eprosima {
 
             // TODO
             static constexpr uint32_t XDP_MAXIMUM_MESSAGE_SIZE = 1000;
-            static constexpr uint32_t XDP_MAXIMUM_INITIAL_PEERS_RANGE = 1;
+            static constexpr uint32_t XDP_MAXIMUM_INITIAL_PEERS_RANGE = 10;
 
 
 

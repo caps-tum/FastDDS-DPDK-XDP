@@ -18,6 +18,7 @@
  */
 
 #include "HelloWorldSubscriber.h"
+#include "fastdds/rtps/transport/ddsi_XDPTransportDescriptor.h"
 
 #include <chrono>
 #include <thread>
@@ -39,12 +40,21 @@ HelloWorldSubscriber::HelloWorldSubscriber()
 
 bool HelloWorldSubscriber::init()
 {
+    Log::SetVerbosity(Log::Kind::Info);
+
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
     pqos.name("HelloWorldSubscriber");
     pqos.wire_protocol().builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol = false;
     pqos.wire_protocol().builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol = true;
     pqos.wire_protocol().builtin.discovery_config.static_edp_xml_config("file://HelloWorldPublisher_static_disc.xml");
+
+    // Explicit configuration of SharedMem transport
+    pqos.transport().use_builtin_transports = false;
+    auto shm_transport = std::make_shared<eprosima::fastdds::rtps::ddsi_XDPTransportDescriptor>();
+    pqos.transport().user_transports.push_back(shm_transport);
+
+
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
 
     if (participant_ == nullptr)
