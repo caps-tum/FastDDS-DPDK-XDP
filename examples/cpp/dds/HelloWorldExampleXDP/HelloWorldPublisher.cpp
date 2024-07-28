@@ -41,7 +41,7 @@ HelloWorldPublisher::HelloWorldPublisher()
 
 bool HelloWorldPublisher::init()
 {
-    Log::SetVerbosity(Log::Kind::Info);
+//    Log::SetVerbosity(Log::Kind::Info);
 
     hello_ = std::make_shared<HelloWorld>();
     hello_->index(0);
@@ -63,8 +63,8 @@ bool HelloWorldPublisher::init()
     auto shm_transport = std::make_shared<ddsi_XDPTransportDescriptor>();
     pqos.transport().user_transports.push_back(shm_transport);
 
-//    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+//    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
 
     if (participant_ == nullptr)
     {

@@ -1214,7 +1214,7 @@ void StatefulReader::NotifyChanges(
     History::const_iterator it = mp_history->changesBegin();
     SequenceNumber_t next_seq = first_seq;
 
-    std::cout << "NotifyChanges: Next sequence is " << next_seq << std::endl;
+//    std::cout << "NotifyChanges: Next sequence is " << next_seq << std::endl;
     // TODO: VB: This does not trigger on XDP because first/next seq is always unknown
     // TODO: VB: On regular, this only triggers after a while
     while (next_seq != c_SequenceNumber_Unknown &&

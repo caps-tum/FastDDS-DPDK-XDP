@@ -122,14 +122,15 @@ void eprosima::fastdds::rtps::ddsi_l2_transport::select_locators(fastrtps::rtps:
     selector.select(0);
 //    assert(entry.multicast.size() == 1);
 //    assert(entry.unicast.empty());
-    std::cout << "L2Transport: Select locators: " << entry.remote_guid;
-    for(auto &locator : entry.multicast) {
-        std::cout << " multicast " << locator;
-    }
-    for(auto &locator : entry.unicast) {
-        std::cout << " unicast " << locator;
-    }
-    std::cout << " selected " << selector.selected_size() << " entries." << std::endl;
+
+//    std::cout << "L2Transport: Select locators: " << entry.remote_guid;
+//    for(auto &locator : entry.multicast) {
+//        std::cout << " multicast " << locator;
+//    }
+//    for(auto &locator : entry.unicast) {
+//        std::cout << " unicast " << locator;
+//    }
+//    std::cout << " selected " << selector.selected_size() << " entries." << std::endl;
     assert(selector.selected_size() == 1);
 }
 

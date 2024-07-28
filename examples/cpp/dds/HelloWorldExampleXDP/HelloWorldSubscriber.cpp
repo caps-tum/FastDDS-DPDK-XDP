@@ -46,7 +46,7 @@ bool HelloWorldSubscriber::init()
 //    Log::Reset();
 //    std::unique_ptr<StdoutConsumer> stdout_consumer(new StdoutConsumer());
 //    Log::RegisterConsumer(std::move(stdout_consumer));
-    Log::SetVerbosity(Log::Kind::Info);
+//    Log::SetVerbosity(Log::Kind::Info);
 
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
@@ -64,7 +64,8 @@ bool HelloWorldSubscriber::init()
     auto sm_transport = std::make_shared<ddsi_XDPTransportDescriptor>();
     pqos.transport().user_transports.push_back(sm_transport);
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
+    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+//    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &exampleParticipantListener);
 
     if (participant_ == nullptr)
     {

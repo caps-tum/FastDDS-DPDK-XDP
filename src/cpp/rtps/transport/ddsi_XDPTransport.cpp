@@ -243,14 +243,14 @@ void ddsi_XDPTransport::processIncomingData() {
             DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &packet->header.h_dest);
 //            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
 
-            printf("XDP: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %zu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
-                   packet->header.h_source[0], packet->header.h_source[1], packet->header.h_source[2],
-                   packet->header.h_source[3], packet->header.h_source[4], packet->header.h_source[5],
-                   srcloc.port, bytes_received,
-                   packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[bytes_received-3], packet->payload[bytes_received-2], packet->payload[bytes_received-1],
-                   rte_hash_crc(packet->payload, bytes_received, 1337),
-                   xsk_umem_free_frames(xsk, false)
-            );
+//            printf("XDP: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %zu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
+//                   packet->header.h_source[0], packet->header.h_source[1], packet->header.h_source[2],
+//                   packet->header.h_source[3], packet->header.h_source[4], packet->header.h_source[5],
+//                   srcloc.port, bytes_received,
+//                   packet->payload[0], packet->payload[1], packet->payload[2], packet->payload[bytes_received-3], packet->payload[bytes_received-2], packet->payload[bytes_received-1],
+//                   rte_hash_crc(packet->payload, bytes_received, 1337),
+//                   xsk_umem_free_frames(xsk, false)
+//            );
 
             receiverInterface->OnDataReceived(
                     packet->payload,

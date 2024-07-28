@@ -99,16 +99,16 @@ eprosima::fastdds::rtps::ddsi_XDPSenderResource::ddsi_XDPSenderResource(ddsi_XDP
             sendto(xsk_socket__fd(xsk->xsk), NULL, 0, MSG_DONTWAIT, NULL, 0);
         }
 
-    printf("XDP: Write complete (dest %02x:%02x:%02x:%02x:%02x:%02x port %i, %u bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free, %i pending).\n",
-           frame_buffer->header.h_dest[0], frame_buffer->header.h_dest[1], frame_buffer->header.h_dest[2],
-           frame_buffer->header.h_dest[3], frame_buffer->header.h_dest[4], frame_buffer->header.h_dest[5],
-           dst.port, total_bytes,
-           frame_buffer->payload[0], frame_buffer->payload[1], frame_buffer->payload[2],
-           frame_buffer->payload[total_bytes-3], frame_buffer->payload[total_bytes-2], frame_buffer->payload[total_bytes-1],
-           rte_hash_crc(frame_buffer->payload, total_bytes, 1337),
-           xsk_umem_free_frames(xsk, true),
-           pendingTransmits
-    );
+//    printf("XDP: Write complete (dest %02x:%02x:%02x:%02x:%02x:%02x port %i, %u bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free, %i pending).\n",
+//           frame_buffer->header.h_dest[0], frame_buffer->header.h_dest[1], frame_buffer->header.h_dest[2],
+//           frame_buffer->header.h_dest[3], frame_buffer->header.h_dest[4], frame_buffer->header.h_dest[5],
+//           dst.port, total_bytes,
+//           frame_buffer->payload[0], frame_buffer->payload[1], frame_buffer->payload[2],
+//           frame_buffer->payload[total_bytes-3], frame_buffer->payload[total_bytes-2], frame_buffer->payload[total_bytes-1],
+//           rte_hash_crc(frame_buffer->payload, total_bytes, 1337),
+//           xsk_umem_free_frames(xsk, true),
+//           pendingTransmits
+//    );
 //        std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
         /* Collect/free completed TX buffers */
