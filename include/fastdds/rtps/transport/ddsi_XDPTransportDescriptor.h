@@ -5,7 +5,6 @@
 #ifndef FASTDDS_XDPTRANSPORTDESCRIPTOR_H
 #define FASTDDS_XDPTRANSPORTDESCRIPTOR_H
 
-#include <rtps/transport/ddsi_XDPTransport.h>
 #include "fastdds/rtps/transport/PortBasedTransportDescriptor.hpp"
 
 namespace eprosima {
