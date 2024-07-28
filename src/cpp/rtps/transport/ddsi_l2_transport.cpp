@@ -73,9 +73,10 @@ eprosima::fastdds::rtps::ddsi_l2_transport::RemoteToMainLocal(const Locator &rem
 
 bool eprosima::fastdds::rtps::ddsi_l2_transport::DoInputLocatorsMatch(const Locator &locator,
                                                                       const Locator &locator1) const {
+    // We ignore the port, we can actually receive from anywhere.
     bool is_match = locator.kind == locator1.kind
-            && locator1.kind == transport_kind_
-            && locator.port == locator1.port;
+            && locator1.kind == transport_kind_;
+//            && locator.port == locator1.port;
     std::cout << "L2Transport: DoInputLocatorsMatch: " << locator << " " << locator1 << ": " << is_match << std::endl;
     return is_match;
 }

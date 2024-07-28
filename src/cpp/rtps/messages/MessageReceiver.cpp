@@ -266,6 +266,7 @@ void MessageReceiver::associateEndpoint(
         {
             auto vec = std::vector<RTPSReader*>();
             vec.push_back(reader);
+            std::cout << "Associated reader added for entity id " << entityId << std::endl;
             associated_readers_.emplace(entityId, vec);
         }
         else
@@ -313,6 +314,7 @@ void MessageReceiver::removeEndpoint(
                     readers->second.erase(it);
                     if (readers->second.empty())
                     {
+                        std::cout << "Associated reader erased?" << std::endl;
                         associated_readers_.erase(readers);
                     }
                     break;
