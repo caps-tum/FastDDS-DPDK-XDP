@@ -187,8 +187,8 @@ void ddsi_XDPTransport::processIncomingData() {
 
     while (true) {
 
-        for (uint8_t tries = 0; tries < 200; tries++) {
-            packetsReceived = xsk_ring_cons__peek(&xsk->rxCompletionRing, 1, &idx_rx);
+        while (true) {
+            packetsReceived = xsk_ring_cons__peek(&xsk->rxCompletionRing, RX_BATCH_SIZE, &idx_rx);
             if (packetsReceived > 0) {
                 break;
             }
@@ -197,50 +197,26 @@ void ddsi_XDPTransport::processIncomingData() {
             }
         }
 
-        if (packetsReceived == 0) {
-//            std::this_thread::sleep_for(std::chrono::microseconds(500));
-            continue;
-        }
-
-        /* Stuff the ring with as many frames as possible */
-        unsigned int stock_frames = packetsReceived;
-
-        if (stock_frames > 0) {
-
-            ret = xsk_ring_prod__reserve(&xsk->umem->rxFillRing, stock_frames, &idx_fq);
-
-            /* This should not happen, but just in case */
-            while (ret != stock_frames) {
-                ret = xsk_ring_prod__reserve(&xsk->umem->rxFillRing, packetsReceived, &idx_fq);
-            }
-
-            for (i = 0; i < stock_frames; i++) {
-                *xsk_ring_prod__fill_addr(&xsk->umem->rxFillRing, idx_fq++) = xsk_alloc_umem_frame(xsk, false);
-            }
-
-            xsk_ring_prod__submit(&xsk->umem->rxFillRing, stock_frames);
-        }
-
         /* Process received packets */
-        const struct xdp_desc *rxDescriptor = xsk_ring_cons__rx_desc(&xsk->rxCompletionRing, idx_rx);
+        for(size_t batchedPacketIdx = 0; batchedPacketIdx < packetsReceived; batchedPacketIdx++) {
+            const struct xdp_desc *rxDescriptor = xsk_ring_cons__rx_desc(&xsk->rxCompletionRing, idx_rx);
+            struct xdp_l2_packet *packet = (struct xdp_l2_packet *) xsk_umem__get_data(xsk->umem->buffer,
+                                                                                       rxDescriptor->addr);
 
-        struct xdp_l2_packet *packet = (struct xdp_l2_packet *) xsk_umem__get_data(xsk->umem->buffer,
-                                                                                   rxDescriptor->addr);
+            size_t bytes_received = 0;
+            if (ddsi_userspace_l2_is_valid_ethertype(packet->header.h_proto)) {
+                Locator srcloc{};
+                srcloc.kind = XDP_TRANSPORT_KIND;
+                srcloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
+                DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.h_source);
 
-        size_t bytes_received = 0;
-        if (ddsi_userspace_l2_is_valid_ethertype(packet->header.h_proto)) {
-            Locator srcloc{};
-            srcloc.kind = XDP_TRANSPORT_KIND;
-            srcloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
-            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(srcloc.address, 10, &packet->header.h_source);
+                bytes_received = DDSI_USERSPACE_GET_PAYLOAD_SIZE(rxDescriptor->len, struct xdp_l2_packet);
 
-            bytes_received = DDSI_USERSPACE_GET_PAYLOAD_SIZE(rxDescriptor->len, struct xdp_l2_packet);
-
-            Locator dstloc{};
-            dstloc.kind = XDP_TRANSPORT_KIND;
-            dstloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
-            // We now trust the destination address
-            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &packet->header.h_dest);
+                Locator dstloc{};
+                dstloc.kind = XDP_TRANSPORT_KIND;
+                dstloc.port = ddsi_userspace_l2_get_port_for_ethertype(packet->header.h_proto);
+                // We now trust the destination address
+                DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &packet->header.h_dest);
 //            DDSI_USERSPACE_COPY_MAC_ADDRESS_AND_ZERO(dstloc.address, 10, &localMacAddress.bytes);
 
 //            printf("XDP: Read complete (src %02x:%02x:%02x:%02x:%02x:%02x port %i, %zu bytes: %02x %02x %02x ... %02x %02x %02x, CRC: %x, %lu umems free).\n",
@@ -252,26 +228,45 @@ void ddsi_XDPTransport::processIncomingData() {
 //                   xsk_umem_free_frames(xsk, false)
 //            );
 
-            receiverInterface->OnDataReceived(
-                    packet->payload,
-                    bytes_received,
-                    dstloc,
-                    srcloc
-            );
+                receiverInterface->OnDataReceived(
+                        packet->payload,
+                        bytes_received,
+                        dstloc,
+                        srcloc
+                );
 //            memcpy(buf, packet->payload, bytes_received);
 
 //            std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-        } else {
-            printf("XDP: Frame ethertype %i ignored.\n", packet->header.h_proto);
+            } else {
+                printf("XDP: Frame ethertype %i ignored.\n", packet->header.h_proto);
+            }
+
+            xsk_free_umem_frame(xsk, rxDescriptor->addr, false);
+
+            // This signals that we finished processing packetsProcessed (not necessarily == packetsReceived) packets from the
+            // rxCompletionRing, freeing up the descriptor slots
+            xsk_ring_cons__release(&xsk->rxCompletionRing, 1);
+
+            idx_rx++;
+
         }
 
-        xsk_free_umem_frame(xsk, rxDescriptor->addr, false);
-        idx_rx++;
+        /* Stuff the ring with as many frames as possible */
+        unsigned int stock_frames = packetsReceived;
 
-        // This signals that we finished processing packetsProcessed (not necessarily == packetsReceived) packets from the
-        // rxCompletionRing, freeing up the descriptor slots
-        xsk_ring_cons__release(&xsk->rxCompletionRing, 1);
+        ret = xsk_ring_prod__reserve(&xsk->umem->rxFillRing, stock_frames, &idx_fq);
+
+        /* This should not happen, but just in case */
+        while (ret != stock_frames) {
+            ret = xsk_ring_prod__reserve(&xsk->umem->rxFillRing, packetsReceived, &idx_fq);
+        }
+
+        for (i = 0; i < stock_frames; i++) {
+            *xsk_ring_prod__fill_addr(&xsk->umem->rxFillRing, idx_fq++) = xsk_alloc_umem_frame(xsk, false);
+        }
+
+        xsk_ring_prod__submit(&xsk->umem->rxFillRing, stock_frames);
 
     }
 }
