@@ -1,10 +1,10 @@
-# User-space Networking (DPDK + XDP) for CycloneDDS
+# User-space Networking (DPDK + XDP) for FastDDS
 
 This is a fork of FastDDS integrating experimental support for user-space networking, which has been shown to improve key metrics such as latency + latency bounds, as well as throughput in terms of samples/second and bandwidth utilization. 
 
 Please consult the paper [**Advancing User-Space Networking for DDS Message-Oriented Middleware**](https://doi.org/10.1016/j.pmcj.2025.102013) for details on the implementation and an evaluation of performance.
 
-The changes to FastDDS mirror the ones created for CycloneDDS.
+The changes to FastDDS mirror the ones created for CycloneDDS and function much in the same way.
 
 These extensions operate on layer 2, no routing is currently possible.
 
