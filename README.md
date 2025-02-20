@@ -19,7 +19,7 @@ Other than that, the implementation is very stable as the extensions can leverag
 
 If you use this work, please cite [**Advancing User-Space Networking for DDS Message-Oriented Middleware**](https://doi.org/10.1016/j.pmcj.2025.102013). For any questions contact [Vincent](https://www.ce.cit.tum.de/caps/mitarbeiter/vincent-bode/).
 
-Below is the original CycloneDDS readme.
+Below is the original FastDDS readme.
 
 
 [![Fast DDS](doc/images/fastdds_github_banner.png)](https://eprosima.com/index.php/products-all/eprosima-fast-dds)
