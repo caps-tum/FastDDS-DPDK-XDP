@@ -1,3 +1,27 @@
+# User-space Networking (DPDK + XDP) for CycloneDDS
+
+This is a fork of FastDDS integrating experimental support for user-space networking, which has been shown to improve key metrics such as latency + latency bounds, as well as throughput in terms of samples/second and bandwidth utilization. 
+
+Please consult the paper [**Advancing User-Space Networking for DDS Message-Oriented Middleware**](https://doi.org/10.1016/j.pmcj.2025.102013) for details on the implementation and an evaluation of performance.
+
+The changes to FastDDS mirror the ones created for CycloneDDS.
+
+These extensions operate on layer 2, no routing is currently possible.
+
+There are currently two limitations:
+
+- Packets are read one-by-one for both DPDK and XDP, which is good for latency but not great for throughput. Ideally, packets should be batched to reduce the number of library invocations. Despite this, FastDDS user-space networking extensions have been shown to perform competitively (see the paper above).
+- Unlike the CycloneDDS extensions, the FastDDS extensions can now support arbitrary size samples (so this is no longer a limitation).
+
+Note that for DPDK a DPDK-configured interface is required and for XDP the privileges to load the packet filter are required.
+
+Other than that, the implementation is very stable as the extensions can leverage both the maturity of FastDDS as well as DPDK and XDP.
+
+If you use this work, please cite [**Advancing User-Space Networking for DDS Message-Oriented Middleware**](https://doi.org/10.1016/j.pmcj.2025.102013). For any questions contact [Vincent](https://www.ce.cit.tum.de/caps/mitarbeiter/vincent-bode/).
+
+Below is the original CycloneDDS readme.
+
+
 [![Fast DDS](doc/images/fastdds_github_banner.png)](https://eprosima.com/index.php/products-all/eprosima-fast-dds)
 
 <br>
